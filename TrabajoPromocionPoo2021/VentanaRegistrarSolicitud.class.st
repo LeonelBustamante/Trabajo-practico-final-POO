@@ -2,24 +2,16 @@ Class {
 	#name : #VentanaRegistrarSolicitud,
 	#superclass : #Ventana,
 	#instVars : [
-		'tituloNombre',
 		'inputNombre',
 		'inputValor',
-		'tituloValor',
 		'rurbro1',
 		'rubro2',
-		'rubro3',
-		'tituloRubro'
+		'rubro3'
 	],
 	#category : #'TrabajoPromocionPoo2021-Visual'
 }
 
-{ #category : #accessing }
-VentanaRegistrarSolicitud >> actualizarTabla [
-	^ self subclassResponsibility
-]
-
-{ #category : #accessing }
+{ #category : #'as yet unclassified' }
 VentanaRegistrarSolicitud >> agregarBoton [
 
 	| trabajo servicio |
@@ -27,16 +19,20 @@ VentanaRegistrarSolicitud >> agregarBoton [
 		           nombre: 'Registrar solicitud de trabajo'
 		           tamanio: 700 @ 30.
 	servicio := Boton
-		           nombre: 'Registrar solicitud de servicio'
-		           tamanio: 700 @ 30.
+		            nombre: 'Registrar solicitud de servicio'
+		            tamanio: 700 @ 30.
 
-	trabajo  modalBotonConfirmar;
-		top: self top + 350.	
-	servicio modalBotonConfirmar;
+	self addMorphCentered: trabajo.
+	self addMorphCentered: servicio.
+
+
+	trabajo
+		modalBotonConfirmar;
+		top: self top + 350.
+	servicio
+		modalBotonConfirmar;
 		top: self top + 450.
-		
-	self addMorph: trabajo.
-	self addMorph: servicio.
+
 
 	"Logic"
 	trabajo mouseAction: [ 
@@ -52,22 +48,17 @@ VentanaRegistrarSolicitud >> agregarBoton [
 			gestor: MiGestor ]
 ]
 
-{ #category : #accessing }
+{ #category : #'as yet unclassified' }
 VentanaRegistrarSolicitud >> agregarCampos [
 	^ self subclassResponsibility
 ]
 
-{ #category : #accessing }
+{ #category : #'as yet unclassified' }
 VentanaRegistrarSolicitud >> agregarLista: arg1 [ 
 	^ self subclassResponsibility
 ]
 
-{ #category : #accessing }
-VentanaRegistrarSolicitud >> agregarRubros [
-	^ self subclassResponsibility
-]
-
-{ #category : #initialization }
+{ #category : #'as yet unclassified' }
 VentanaRegistrarSolicitud >> initialize [
 
 	super initialize.

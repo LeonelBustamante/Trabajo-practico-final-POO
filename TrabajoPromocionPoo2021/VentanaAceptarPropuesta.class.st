@@ -1,55 +1,40 @@
 Class {
 	#name : #VentanaAceptarPropuesta,
 	#superclass : #Ventana,
-	#instVars : [
-		'tabla1',
-		'tabla2',
-		'tabla3'
-	],
 	#category : #'TrabajoPromocionPoo2021-Visual'
 }
 
-{ #category : #accessing }
-VentanaAceptarPropuesta >> actualizarTabla:unaTabla parametro: unParametro [
+{ #category : #'as yet unclassified' }
+VentanaAceptarPropuesta >> agregarBoton [
 
-	unaTabla  setText: unParametro
+	| botonRegistro |
+	botonRegistro := Boton nombre: 'Aceptar Propuestas' tamanio: 700 @ 30.
+	self addMorphCentered: botonRegistro.
+	botonRegistro modalBotonConfirmar.
+
+	MiGestor addDependent: self.
+
+	botonRegistro mouseAction: [ 
+		self
+			removeMorph: botonRegistro;
+			agregarLista: 'Coleccion Solicitudes Resueltas'.
+		MiGestor aceptarPropuestas ]
 ]
 
 { #category : #'as yet unclassified' }
-VentanaAceptarPropuesta >> actualizarTablas [ 
-self
-			actualizarTabla: tabla1
-			parametro: MiGestor colPropuestasToString.
-		self
-			actualizarTabla: tabla2
-			parametro: MiGestor colSolicitudesPendientesToString.
-		self
-			actualizarTabla: tabla3
-			parametro: MiGestor colSolicitudesResueltasToString
+VentanaAceptarPropuesta >> agregarLista: aString [
+
+	"Agrego titulo y lista"
+
+	| titulo |
+	titulo := Texto titulo: aString tamanio: 20.
+	tabla := Tabla tamanio: 1000 @ 500.
+	self addMorphCentered: titulo.
+	self addMorphCentered: tabla.
+	titulo top: tabla top - 50
 ]
 
-{ #category : #'Agregando componentes' }
-VentanaAceptarPropuesta >> agregarBoton [
-
-	| boton |
-	boton := Boton nombre: 'Aceptar Propuesta' tamanio: 700 @ 30.
-	boton modalBotonConfirmar.
-	self addMorphCentered: boton.
-	boton top: tabla1 bottom + 30.
-	boton mouseAction: [ 
-		MiGestor aceptarPropuestas.
-		self
-			actualizarTabla: tabla1
-			parametro: MiGestor colPropuestasToString.
-		self
-			actualizarTabla: tabla2
-			parametro: MiGestor colSolicitudesPendientesToString.
-		self
-			actualizarTabla: tabla3
-			parametro: MiGestor colSolicitudesResueltasToString ]
-]
-
-{ #category : #accessing }
+{ #category : #'as yet unclassified' }
 VentanaAceptarPropuesta >> agregarLista: aString lista2: aString2 lista3: aString3 [
 
 	"Agrego titulo y lista"
@@ -84,14 +69,9 @@ VentanaAceptarPropuesta >> agregarLista: aString lista2: aString2 lista3: aStrin
 	tabla3 left: tabla2 right + 50
 ]
 
-{ #category : #initialization }
+{ #category : #'as yet unclassified' }
 VentanaAceptarPropuesta >> initialize [
 
 	super initialize.
-	self
-		agregarLista: 'Propuestas'
-		lista2: 'Solicitudes pendientes'
-		lista3: 'Solicitudes resueltas';
-		agregarBoton;
-		actualizarTablas.
+	self agregarBoton
 ]

@@ -34,8 +34,10 @@ GestorEmpleos >> aceptarPropuestas [
 		(self estaEnColSolicitudesPendientes: unaSolicitud) ifTrue: [ 
 			colSolicitudesPendientes remove: unaSolicitud.
 			colSolicitudesResueltas add: unaSolicitud.
-			cadaPropuesta getPostulante esPersona ifFalse:[
-			cadaPropuesta getPostulante sacarSolicitud: unaSolicitud ] ]]
+			cadaPropuesta getPostulante esPersona ifFalse: [ 
+				cadaPropuesta getPostulante sacarSolicitud: unaSolicitud ] ] ].
+	self
+		changed: colPropuestas.
 ]
 
 { #category : #accessing }
@@ -145,13 +147,11 @@ GestorEmpleos >> generarPropuestas [
 									res := cadaPostulante verificaProductos:
 										       cadaSol getColCestaProductos.
 									res ifTrue: [ postulanteApto := true ] ] ] ] ].
-				postulanteApto
-					ifTrue: [ 
-						propuesta := Propuesta
-							             postulante: cadaPostulante
-							             solicitud: cadaSol.
-						colPropuestas add: propuesta ]
-					ifFalse: [  ] ] ] ]
+				postulanteApto ifTrue: [ 
+					propuesta := Propuesta
+						             postulante: cadaPostulante
+						             solicitud: cadaSol.
+					colPropuestas add: propuesta ] ] ] ].self changed: colPropuestas 
 ]
 
 { #category : #initialization }
@@ -189,17 +189,18 @@ GestorEmpleos >> registrarEmpresaSolicitante: unaEmpresa [
 GestorEmpleos >> registrarPostulante: unPostulante [
 
 	| temp |
-	temp := colPostulantes anySatisfy: [ :x | unPostulante getNombre = x getNombre ].
-	temp ifFalse: [ colPostulantes add: unPostulante ]
-	
+	temp := colPostulantes anySatisfy: [ :x | 
+		        unPostulante getNombre = x getNombre ].
+	temp ifFalse: [ colPostulantes add: unPostulante ].
+	self changed: colPostulantes 
 ]
 
 { #category : #'registrar solicitud' }
 GestorEmpleos >> registrarSolicitud: unaSolicitud postulante: unNombrePostualante [
 
-	
-	|propietariaSolicitud|
+	| propietariaSolicitud |
 	colSolicitudesPendientes add: unaSolicitud.
-	propietariaSolicitud := colEmpresasSolicitantes detect: [:x|  x getNombre = unNombrePostualante  ].
-		propietariaSolicitud  agregarSolicitud:  unaSolicitud 
+	propietariaSolicitud := colEmpresasSolicitantes detect: [ :x | 
+		                        x getNombre = unNombrePostualante ].
+	propietariaSolicitud agregarSolicitud: unaSolicitud.self changed: colSolicitudesPendientes 
 ]

@@ -2,13 +2,8 @@ Class {
 	#name : #VentanaRegistrarEmpresaSolicitante,
 	#superclass : #Ventana,
 	#instVars : [
-		'tituloNombre',
 		'inputNombre',
-		'tituloRubro',
-		'inputRubro',
-		'tituloPuntos',
 		'inputPuntos',
-		'tituloProductos',
 		'rubro1',
 		'rubro2',
 		'rubro3',
@@ -22,7 +17,7 @@ Class {
 	#category : #'TrabajoPromocionPoo2021-Visual'
 }
 
-{ #category : #accessing }
+{ #category : #'as yet unclassified' }
 VentanaRegistrarEmpresaSolicitante >> agregarBoton [
 
 	| botonRegistro |
@@ -71,21 +66,26 @@ VentanaRegistrarEmpresaSolicitante >> agregarBoton [
 		MiGestor registrarEmpresaSolicitante: unaEmpresa ]]
 ]
 
-{ #category : #accessing }
+{ #category : #'as yet unclassified' }
 VentanaRegistrarEmpresaSolicitante >> agregarCampos [
+
 	"Variables"
+
+	| tituloNombre tituloPuntos tituloRubro tituloProductos |
 	tituloNombre := Texto titulo: 'Ingrese el nombre' tamanio: 20.
 	inputNombre := TextBox nombre: 'Ingrese el nombre' tamanio: 450 @ 90.
-	
-	tituloPuntos := Texto titulo: 'Ingrese los puntos' tamanio: 20.
+
+	tituloPuntos := Texto titulo: 'Ingrese los puntos' tamanio: 20. 
 	inputPuntos := TextBox nombre: 'Ingrese puntos' tamanio: 450 @ 90.
-	
+
 	tituloRubro := Texto titulo: 'Marque su categoria' tamanio: 20.
 	rubro1 := Checkbox nombre: 'Pintureria' tamanio: 100 @ 20.
 	rubro2 := Checkbox nombre: 'Colchoneria' tamanio: 100 @ 20.
 	rubro3 := Checkbox nombre: 'Electro' tamanio: 100 @ 20.
-	
-	tituloProductos := Texto titulo: 'Marque si tiene productos' tamanio: 20.
+
+	tituloProductos := Texto
+		                   titulo: 'Marque si tiene productos'
+		                   tamanio: 20.
 	producto1 := Checkbox nombre: 'Pintura' tamanio: 100 @ 20.
 	producto2 := Checkbox nombre: 'Pincel' tamanio: 100 @ 20.
 	producto3 := Checkbox nombre: 'Colchon' tamanio: 100 @ 20.
@@ -97,16 +97,13 @@ VentanaRegistrarEmpresaSolicitante >> agregarCampos [
 	self
 		addMorph: tituloNombre;
 		addMorph: inputNombre;
-
 		addMorph: tituloRubro;
 		addMorph: rubro1;
 		addMorph: rubro2;
 		addMorph: rubro3;
-
 		addMorph: tituloPuntos;
 		addMorph: inputPuntos;
-		
-		addMorph: tituloProductos;		
+		addMorph: tituloProductos;
 		addMorph: producto1;
 		addMorph: producto2;
 		addMorph: producto3;
@@ -115,27 +112,57 @@ VentanaRegistrarEmpresaSolicitante >> agregarCampos [
 		addMorph: producto6.
 
 	"estilo"
-	tituloNombre top: 150; left: 10.
-	inputNombre top: tituloNombre bottom + 20; left: 10.
-	
- 	tituloRubro top: inputNombre bottom + 20; left: 10.
-	rubro1 top: tituloRubro bottom + 20; left: 10.
-	rubro2 top: tituloRubro bottom + 20; left: 130.
-	rubro3 top: tituloRubro bottom + 20; left: 250.
-	
- 	tituloPuntos top: rubro1 bottom + 20; left: 10.
-	inputPuntos top: tituloPuntos bottom + 20; left: 10.
-	
-	tituloProductos top: inputPuntos bottom + 20; left: 10.
-	producto1 top: tituloProductos bottom + 20; left: 10.
-	producto2 top: tituloProductos bottom + 20; left: 130.
-	producto3 top: tituloProductos bottom + 20; left: 250.
-	producto4 top: producto1 bottom + 20; left: 10.
-	producto5 top: producto1 bottom + 20; left: 130.
-	producto6 top: producto1 bottom + 20; left: 250
+	tituloNombre
+		top: 150;
+		left: 10.
+	inputNombre
+		top: tituloNombre bottom + 20;
+		left: 10.
+
+	tituloRubro
+		top: inputNombre bottom + 20;
+		left: 10.
+	rubro1
+		top: tituloRubro bottom + 20;
+		left: 10.
+	rubro2
+		top: tituloRubro bottom + 20;
+		left: 130.
+	rubro3
+		top: tituloRubro bottom + 20;
+		left: 250.
+
+	tituloPuntos
+		top: rubro1 bottom + 20;
+		left: 10.
+	inputPuntos
+		top: tituloPuntos bottom + 20;
+		left: 10.
+
+	tituloProductos
+		top: inputPuntos bottom + 20;
+		left: 10.
+	producto1
+		left: self left + 10;
+		top: tituloProductos bottom + 20.
+	producto2
+		left: self left + 10;
+		top: producto1 bottom + 20.
+	producto3
+		left: self left + 130;
+		top: tituloProductos bottom + 20.
+	producto4
+		left: self left + 130;
+		top: producto1 bottom + 20.
+	producto5
+		left: self left + 250;
+		top: tituloProductos bottom + 20.
+	producto6
+		left: self left + 250;
+		top: producto1 bottom + 20
 ]
 
-{ #category : #accessing }
+{ #category : #'as yet unclassified' }
 VentanaRegistrarEmpresaSolicitante >> agregarLista: aString [
 
 	| titulo |
@@ -147,7 +174,7 @@ VentanaRegistrarEmpresaSolicitante >> agregarLista: aString [
 
 ]
 
-{ #category : #private }
+{ #category : #'as yet unclassified' }
 VentanaRegistrarEmpresaSolicitante >> cargaProductos [
 
 	| unaColProductos |
@@ -163,7 +190,7 @@ VentanaRegistrarEmpresaSolicitante >> cargaProductos [
 	^ unaColProductos
 ]
 
-{ #category : #initialization }
+{ #category : #'as yet unclassified' }
 VentanaRegistrarEmpresaSolicitante >> initialize [
 
 	super initialize.
@@ -173,12 +200,4 @@ VentanaRegistrarEmpresaSolicitante >> initialize [
 		agregarCampos;
 		agregarBoton;
 		update: MiGestor colEmpresasSolicitantes  
-]
-
-{ #category : #updating }
-VentanaRegistrarEmpresaSolicitante >> update: unaCol [
-
-	unaCol isEmpty
-		ifTrue: [ tabla setText: 'Coleccion de Empresas Solicitantes vacia' ]
-		ifFalse: [ tabla setText: (MiGestor colToString: unaCol) ]
 ]

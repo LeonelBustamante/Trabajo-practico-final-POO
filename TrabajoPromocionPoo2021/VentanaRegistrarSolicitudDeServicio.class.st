@@ -2,12 +2,6 @@ Class {
 	#name : #VentanaRegistrarSolicitudDeServicio,
 	#superclass : #VentanaRegistrarSolicitud,
 	#instVars : [
-		'tituloDuracion',
-		'inputDuracionMeses',
-		'inputDuracionAnio',
-		'duracionProlongada',
-		'tituloProductos',
-		'tituloTipoPago',
 		'producto1',
 		'producto2',
 		'producto3',
@@ -23,20 +17,14 @@ Class {
 }
 
 { #category : #'as yet unclassified' }
-VentanaRegistrarSolicitudDeServicio >> actualizarTabla [
-
-	tabla setText: MiGestor colSolicitudesPendientesToString
-]
-
-{ #category : #'as yet unclassified' }
 VentanaRegistrarSolicitudDeServicio >> agregarBoton [
 
 	| botonRegistro |
 	botonRegistro := Boton nombre: 'Registrar' tamanio: 200 @ 30.
-	botonRegistro
-		modalBotonConfirmar;
-		bottom: self bottom - 10.
 	self addMorphCentered: botonRegistro.
+		botonRegistro
+		modalBotonConfirmar;
+		top: self bottom - 20.
 
 	MiGestor addDependent: self.
 
@@ -108,33 +96,45 @@ VentanaRegistrarSolicitudDeServicio >> agregarBoton [
 				postulante: inputNombre input ] ]
 ]
 
-{ #category : #accessing }
+{ #category : #'as yet unclassified' }
 VentanaRegistrarSolicitudDeServicio >> agregarCampos [
 
-	| advertencia |
+	| advertencia tituloDuracion tituloTipoPago tituloProductos tituloNombre tituloValor tituloRubro|
 	tituloNombre := Texto titulo: 'Ingrese el nombre' tamanio: 20.
-	inputNombre := TextBox nombre: 'Ingrese aqui el nombre' tamanio: 450 @ 90.
+	inputNombre := TextBox 
+		               nombre: 'Ingrese aqui el nombre'
+		               tamanio: 450 @ 90.
 
 	tituloDuracion := Texto titulo: 'Ingrese una duracion' tamanio: 20.
-	advertencia := Texto titulo: 'Si es puntual dejar en blanco' tamanio: 10.
-	inputDias := TextBox nombre: 'Ingrese aqui el valor' tamanio: 450 @ 90.
+	advertencia := Texto
+		               titulo: 'Si es puntual dejar en blanco'
+		               tamanio: 10.
+	inputDias := TextBox
+		             nombre: 'Ingrese aqui el valor'
+		             tamanio: 450 @ 90.
 
 	tituloValor := Texto titulo: 'Ingrese el valor' tamanio: 20.
-	inputValor := TextBox nombre: 'Ingrese aqui el valor' tamanio: 450 @ 90.
-	
+	inputValor := TextBox
+		              nombre: 'Ingrese aqui el valor'
+		              tamanio: 450 @ 90.
+
 	tituloTipoPago := Texto titulo: 'Ingrese tipo de pago' tamanio: 20.
 	tipoPago1 := Checkbox nombre: 'Diario' tamanio: 100 @ 20.
 	tipoPago2 := Checkbox nombre: 'Semanal' tamanio: 100 @ 20.
 	tipoPago3 := Checkbox nombre: 'Mensual' tamanio: 100 @ 20.
-	
 
-	tituloRubro := Texto titulo: 'Marque su categoria(descripcion)' tamanio: 20.
+
+	tituloRubro := Texto
+		               titulo: 'Marque su categoria(descripcion)'
+		               tamanio: 20.
 	rurbro1 := Checkbox nombre: 'Pintureria' tamanio: 100 @ 20.
 	rubro2 := Checkbox nombre: 'Colchoneria' tamanio: 100 @ 20.
 	rubro3 := Checkbox nombre: 'Electro' tamanio: 100 @ 20.
 
 
-	tituloProductos := Texto titulo: 'Marque si tiene productos' tamanio: 20.
+	tituloProductos := Texto
+		                   titulo: 'Marque si tiene productos'
+		                   tamanio: 20.
 	producto1 := Checkbox nombre: 'Pintura' tamanio: 100 @ 20.
 	producto2 := Checkbox nombre: 'Pincel' tamanio: 100 @ 20.
 	producto3 := Checkbox nombre: 'Colchon' tamanio: 100 @ 20.
@@ -145,24 +145,19 @@ VentanaRegistrarSolicitudDeServicio >> agregarCampos [
 	self
 		addMorph: tituloNombre;
 		addMorph: inputNombre;
-
 		addMorph: tituloRubro;
 		addMorph: rurbro1;
 		addMorph: rubro2;
 		addMorph: rubro3;
-
 		addMorph: tituloDuracion;
 		addMorph: advertencia;
 		addMorph: inputDias;
-			
 		addMorph: tituloValor;
 		addMorph: inputValor;
-
 		addMorph: tituloTipoPago;
 		addMorph: tipoPago1;
 		addMorph: tipoPago2;
 		addMorph: tipoPago3;
-		
 		addMorph: tituloProductos;
 		addMorph: producto1;
 		addMorph: producto2;
@@ -174,7 +169,7 @@ VentanaRegistrarSolicitudDeServicio >> agregarCampos [
 
 	tituloNombre
 		left: 10;
-		top: 150.
+		top: 70.
 	inputNombre
 		left: 10;
 		top: tituloNombre bottom + 20.
@@ -226,23 +221,23 @@ VentanaRegistrarSolicitudDeServicio >> agregarCampos [
 		left: self left + 10;
 		top: tituloProductos bottom + 20.
 	producto2
-		left: self left + 130;
-		top: tituloProductos bottom + 20.
-	producto3
-		left: self left + 250;
-		top: tituloProductos bottom + 20.
-	producto4
 		left: self left + 10;
 		top: producto1 bottom + 20.
-	producto5
+	producto3
+		left: self left + 130;
+		top: tituloProductos bottom + 20.
+	producto4
 		left: self left + 130;
 		top: producto1 bottom + 20.
+	producto5
+		left: self left + 250;
+		top: tituloProductos bottom + 20.
 	producto6
 		left: self left + 250;
 		top: producto1 bottom + 20
 ]
 
-{ #category : #accessing }
+{ #category : #'as yet unclassified' }
 VentanaRegistrarSolicitudDeServicio >> agregarLista: aString [
 
 	| titulo |
@@ -260,7 +255,7 @@ VentanaRegistrarSolicitudDeServicio >> agregarLista: aString [
 		top: 200
 ]
 
-{ #category : #private }
+{ #category : #'as yet unclassified' }
 VentanaRegistrarSolicitudDeServicio >> cargaProductos [
 
 	| unaColProductos |
@@ -276,7 +271,7 @@ VentanaRegistrarSolicitudDeServicio >> cargaProductos [
 	^ unaColProductos
 ]
 
-{ #category : #initialization }
+{ #category : #'as yet unclassified' }
 VentanaRegistrarSolicitudDeServicio >> initialize [
 
 	super initialize.
@@ -284,5 +279,5 @@ VentanaRegistrarSolicitudDeServicio >> initialize [
 		agregarLista: 'Solicitudes';
 		agregarCampos;
 		agregarBoton;
-		actualizarTabla
+		update: MiGestor colSolicitudesPendientes
 ]

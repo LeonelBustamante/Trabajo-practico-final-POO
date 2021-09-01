@@ -4,52 +4,36 @@ Class {
 	#category : #'TrabajoPromocionPoo2021-Visual'
 }
 
-{ #category : #accessing }
-VentanaGenerarPropuesta >> actualizarTabla [
-
-	tabla setText: MiGestor colPropuestasToString 
-]
-
-{ #category : #accessing }
-VentanaGenerarPropuesta >> actualizarTabla: unParametro [
-
-	tabla setText: unParametro
-]
-
-{ #category : #accessing }
+{ #category : #'as yet unclassified' }
 VentanaGenerarPropuesta >> agregarBoton [
 
-	| boton |
-	boton := Boton nombre: 'Generar Propuestas' tamanio: 700 @ 30.
-	boton modalBotonConfirmar.
-	self addMorphCentered: boton.
+	| botonRegistro |
+	botonRegistro := Boton nombre: 'Generar Propuestas' tamanio: 700 @ 30.
+	self addMorphCentered: botonRegistro.
+	botonRegistro modalBotonConfirmar.
 
-	boton mouseAction: [ 
+	MiGestor addDependent: self.
 
-		MiGestor generarPropuestas.
+	botonRegistro mouseAction: [ 
 		self
-			removeMorph: boton;
-			agregarLista: 'Propuestas generadas';
-			actualizarTabla:		MiGestor colPropuestasToString. ]
+			removeMorph: botonRegistro;
+			agregarLista: 'Propuestas generadas'.		MiGestor generarPropuestas. ]
 ]
 
-{ #category : #accessing }
+{ #category : #'as yet unclassified' }
 VentanaGenerarPropuesta >> agregarLista: aString [
 
 	"Agrego titulo y lista"
 
 	| titulo |
 	titulo := Texto titulo: aString tamanio: 20.
-	tabla := RubScrolledTextMorph new.
-	tabla
-		extent: 1000 @ 500;
-		beReadOnly.
+	tabla := Tabla tamanio: 1000 @ 500.
 	self addMorphCentered: titulo.
 	self addMorphCentered: tabla.
 	titulo top: tabla top - 50
 ]
 
-{ #category : #initialization }
+{ #category : #'as yet unclassified' }
 VentanaGenerarPropuesta >> initialize [
 
 	super initialize.

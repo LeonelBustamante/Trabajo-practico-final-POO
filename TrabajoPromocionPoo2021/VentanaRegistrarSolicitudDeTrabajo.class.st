@@ -5,25 +5,17 @@ Class {
 }
 
 { #category : #'as yet unclassified' }
-VentanaRegistrarSolicitudDeTrabajo >> actualizarTabla [
-
-	tabla setText: MiGestor colSolicitudesPendientesToString
-]
-
-{ #category : #'as yet unclassified' }
 VentanaRegistrarSolicitudDeTrabajo >> agregarBoton [
 
 	| botonRegistro |
 	botonRegistro := Boton nombre: 'Registrar' tamanio: 200 @ 30.
+	self addMorphCentered: botonRegistro.
 	botonRegistro
-		center: self center;
-		bottom: self bottom - 10;
-		color: (Color r: 0.0 g: 0.5 b: 0.8);
-		borderStyle: (RoundedBorder new
-				 cornerRadius: 5;
-				 width: 5;
-				 color: (Color r: 0.0 g: 0.5 b: 0.8)).
-	self addMorph: botonRegistro.
+		modalBotonConfirmar;
+		bottom: self bottom - 10.
+		
+	MiGestor addDependent: self.
+
 	botonRegistro mouseAction: [ 
 		| rubro controlRubro controlEmpresa |
 		rurbro1 estado
@@ -46,24 +38,32 @@ VentanaRegistrarSolicitudDeTrabajo >> agregarBoton [
 		controlEmpresa := MiGestor colEmpresasSolicitantes anySatisfy: [ :x | 
 			                  x getNombre = inputNombre input ].
 
-		inputNombre input isEmpty not & controlRubro
-		& inputValor isEmpty not & controlEmpresa ifTrue: [ 
+		inputNombre isNotEmpty & controlRubro & inputValor isNotEmpty
+		& controlEmpresa ifTrue: [ 
 			| unaSolicitud |
 			unaSolicitud := DeTrabajo
 				                descripcion: rubro
 				                valor: inputValor input.
 			MiGestor
 				registrarSolicitud: unaSolicitud
-				postulante: inputNombre input.
-			tabla setText: MiGestor colSolicitudesPendientesToString ] ]
+				postulante: inputNombre input ] ]
 ]
 
-{ #category : #accessing }
+{ #category : #'as yet unclassified' }
 VentanaRegistrarSolicitudDeTrabajo >> agregarCampos [
+
+	| tituloNombre tituloRubro tituloValor |
 	tituloNombre := Texto titulo: 'Ingrese el nombre' tamanio: 20.
 	inputNombre := TextBox
 		               nombre: 'Ingrese aqui el nombre'
 		               tamanio: 450 @ 90.
+ 
+	tituloRubro := Texto
+		               titulo: 'Marque su categoria(descripcion)'
+		               tamanio: 20.
+	rurbro1 := Checkbox nombre: 'Pintureria' tamanio: 100 @ 20.
+	rubro2 := Checkbox nombre: 'Colchoneria' tamanio: 100 @ 20.
+	rubro3 := Checkbox nombre: 'Electro' tamanio: 100 @ 20.
 
 
 	tituloValor := Texto titulo: 'Ingrese el valor' tamanio: 20.
@@ -72,9 +72,12 @@ VentanaRegistrarSolicitudDeTrabajo >> agregarCampos [
 		              tamanio: 450 @ 90.
 
 	self
-		agregarRubros;
-				addMorph: tituloNombre;
+		addMorph: tituloNombre;
 		addMorph: inputNombre;
+		addMorph: tituloRubro;
+		addMorph: rurbro1;
+		addMorph: rubro2;
+		addMorph: rubro3;
 		addMorph: tituloValor;
 		addMorph: inputValor.
 
@@ -104,23 +107,16 @@ VentanaRegistrarSolicitudDeTrabajo >> agregarCampos [
 		top: tituloValor bottom + 20
 ]
 
-{ #category : #accessing }
+{ #category : #'as yet unclassified' }
 VentanaRegistrarSolicitudDeTrabajo >> agregarLista: aString [
-
-	"Agrego titulo y lista"
 
 	| titulo |
 	titulo := Texto titulo: aString tamanio: 20.
-	tabla := RubScrolledTextMorph new.
-	tabla
-		extent: 500 @ 500;
-		beReadOnly.
+	tabla := Tabla tamanio: 500 @ 500.
 
 	self addMorph: titulo.
 	self addMorph: tabla.
 
-
-	"Posiciono"
 	titulo
 		left: self right - 700;
 		top: 150.
@@ -129,24 +125,7 @@ VentanaRegistrarSolicitudDeTrabajo >> agregarLista: aString [
 		top: 200
 ]
 
-{ #category : #accessing }
-VentanaRegistrarSolicitudDeTrabajo >> agregarRubros [
-
-	tituloRubro := Texto
-		                     titulo: 'Marque su categoria(descripcion)'
-		                     tamanio: 20.
-	rurbro1 := Checkbox nombre: 'Pintureria' tamanio: 100 @ 20.
-	rubro2 := Checkbox nombre: 'Colchoneria' tamanio: 100 @ 20.
-	rubro3 := Checkbox nombre: 'Electro' tamanio: 100 @ 20.
-
-	self
-		addMorph: tituloRubro;
-		addMorph: rurbro1;
-		addMorph: rubro2;
-		addMorph: rubro3
-]
-
-{ #category : #initialization }
+{ #category : #'as yet unclassified' }
 VentanaRegistrarSolicitudDeTrabajo >> initialize [
 
 	super initialize.
@@ -154,5 +133,5 @@ VentanaRegistrarSolicitudDeTrabajo >> initialize [
 		agregarLista: 'Solicitudes';
 		agregarCampos;
 		agregarBoton;
-		actualizarTabla
+				update: MiGestor colSolicitudesPendientes
 ]

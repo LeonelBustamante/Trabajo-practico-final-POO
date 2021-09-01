@@ -20,7 +20,7 @@ Ventana class >> titulo: unTitulo gestor: unGestor [
 	temp agregarTitulo: unTitulo; openCenteredInWorld; left: 550
 ]
 
-{ #category : #addMorph }
+{ #category : #'as yet unclassified' }
 Ventana >> agregarAPantalla [ 
 
 	exit mouseAction: [ self cerrar ].
@@ -28,24 +28,23 @@ Ventana >> agregarAPantalla [
 
 ]
 
-{ #category : #'Agregando componentes' }
+{ #category : #accessing }
 Ventana >> agregarBoton [
-
 	^ self subclassResponsibility
 ]
 
-{ #category : #'Agregando componentes' }
+{ #category : #'as yet unclassified' }
 Ventana >> agregarEstiloBotones [ 
 
 	exit left: self right - 100; top: 30.
 ]
 
-{ #category : #'Agregando componentes' }
+{ #category : #accessing }
 Ventana >> agregarLista: arg1 [ 
 	^ self subclassResponsibility
 ]
 
-{ #category : #'Agregando componentes' }
+{ #category : #'as yet unclassified' }
 Ventana >> agregarTitulo: aString [
 
 	| titulo |
@@ -53,7 +52,7 @@ Ventana >> agregarTitulo: aString [
 	self addMorph: titulo
 ]
 
-{ #category : #'Agregando componentes' }
+{ #category : #'as yet unclassified' }
 Ventana >> botonCerrar [
 
 	exit := Boton nombre: 'X' tamanio: 30 @ 30.
@@ -63,21 +62,29 @@ Ventana >> botonCerrar [
 		agregarAPantalla
 ]
 
-{ #category : #acciones }
+{ #category : #'as yet unclassified' }
 Ventana >> cerrar [
 
 	self delete
 ]
 
-{ #category : #estilos }
+{ #category : #'as yet unclassified' }
 Ventana >> estilo [
 
 	self extent: 1400 @ 800; color: Color transparent; borderColor: Color transparent
 ]
 
-{ #category : #initialization }
+{ #category : #'as yet unclassified' }
 Ventana >> initialize [
 
 	super initialize.
 	self beSticky; estilo; botonCerrar
+]
+
+{ #category : #'as yet unclassified' }
+Ventana >> update: unaCol [
+
+	unaCol isEmpty
+		ifTrue: [ tabla setText: 'Esperando Ingreso' ]
+		ifFalse: [ tabla setText: (MiGestor colToString: unaCol) ]
 ]

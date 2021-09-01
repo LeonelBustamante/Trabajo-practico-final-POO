@@ -2,22 +2,15 @@ Class {
 	#name : #VentanaRegistrarPostulante,
 	#superclass : #Ventana,
 	#instVars : [
-		'tituloNombre',
 		'inputNombre',
-		'tituloRubro',
-		'checkboxRubro1',
-		'checkboxRubro2',
-		'checkboxRubro3'
+		'rubro1',
+		'rubro2',
+		'rubro3'
 	],
 	#category : #'TrabajoPromocionPoo2021-Visual'
 }
 
-{ #category : #accessing }
-VentanaRegistrarPostulante >> actualizarTabla [
-	^ self subclassResponsibility
-]
-
-{ #category : #accessing }
+{ #category : #'as yet unclassified' }
 VentanaRegistrarPostulante >> agregarBoton [
 
 	| empresa persona |
@@ -70,22 +63,17 @@ VentanaRegistrarPostulante >> agregarBoton [
 			gestor: MiGestor ]
 ]
 
-{ #category : #accessing }
+{ #category : #'as yet unclassified' }
 VentanaRegistrarPostulante >> agregarCampos [
 	^ self subclassResponsibility
 ]
 
-{ #category : #accessing }
+{ #category : #'as yet unclassified' }
 VentanaRegistrarPostulante >> agregarLista: arg1 [ 
 	^ self subclassResponsibility
 ]
 
-{ #category : #accessing }
-VentanaRegistrarPostulante >> agregarRubro [
-	^ self subclassResponsibility
-]
-
-{ #category : #initialization }
+{ #category : #'as yet unclassified' }
 VentanaRegistrarPostulante >> initialize [
 
 	super initialize.

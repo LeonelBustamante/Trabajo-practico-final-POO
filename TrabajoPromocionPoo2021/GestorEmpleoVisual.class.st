@@ -22,7 +22,7 @@ GestorEmpleoVisual class >> crear [
 	temp openInExternalWindow.
 ]
 
-{ #category : #addMorph }
+{ #category : #'as yet unclassified' }
 GestorEmpleoVisual >> agregarAPantalla [
 	
 	botonRegistroEmpresa left: 30; top: 250; mouseAction: [  
@@ -56,7 +56,7 @@ GestorEmpleoVisual >> agregarAPantalla [
 
 ]
 
-{ #category : #estilos }
+{ #category : #'as yet unclassified' }
 GestorEmpleoVisual >> agregarBotones [
 
 	botonRegistroEmpresa := Boton nombre: 'Registrar Empresa Solicitante' tamanio: 405 @ 90.
@@ -72,7 +72,7 @@ GestorEmpleoVisual >> agregarBotones [
 
 ]
 
-{ #category : #estilos }
+{ #category : #'as yet unclassified' }
 GestorEmpleoVisual >> agregarEstiloBotones [
 	botonRegistroEmpresa modalBotonMenu.
 	botonRegistroSolicitud modalBotonMenu.
@@ -83,7 +83,7 @@ GestorEmpleoVisual >> agregarEstiloBotones [
 
 ]
 
-{ #category : #estilos }
+{ #category : #'as yet unclassified' }
 GestorEmpleoVisual >> agregarFondo [
 
 	| fondo |
@@ -92,7 +92,7 @@ GestorEmpleoVisual >> agregarFondo [
 	self addMorphBack: fondo
 ]
 
-{ #category : #estilos }
+{ #category : #'as yet unclassified' }
 GestorEmpleoVisual >> agregarLogo [
 
 	| logo |
@@ -137,13 +137,13 @@ GestorEmpleoVisual >> agregarReloj [
 		1 second wait ] ] fork
 ]
 
-{ #category : #acciones }
+{ #category : #'as yet unclassified' }
 GestorEmpleoVisual >> cerrar [
 
 	self delete
 ]
 
-{ #category : #initialization }
+{ #category : #'as yet unclassified' }
 GestorEmpleoVisual >> initialize [
 
 	super initialize.
