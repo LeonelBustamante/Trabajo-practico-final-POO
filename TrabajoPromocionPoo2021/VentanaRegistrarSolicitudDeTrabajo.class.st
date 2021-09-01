@@ -26,19 +26,19 @@ VentanaRegistrarSolicitudDeTrabajo >> agregarBoton [
 	self addMorph: botonRegistro.
 	botonRegistro mouseAction: [ 
 		| rubro controlRubro controlEmpresa |
-		checkboxRubro1 estado
+		rurbro1 estado
 			ifTrue: [ 
-				rubro := checkboxRubro1 label.
+				rubro := rurbro1 label.
 				controlRubro := true ]
 			ifFalse: [ 
-				checkboxRubro2 estado
+				rubro2 estado
 					ifTrue: [ 
-						rubro := checkboxRubro2 label.
+						rubro := rubro2 label.
 						controlRubro := true ]
 					ifFalse: [ 
-						checkboxRubro3 estado
+						rubro3 estado
 							ifTrue: [ 
-								rubro := checkboxRubro3 label.
+								rubro := rubro3 label.
 								controlRubro := true ]
 							ifFalse: [ controlRubro := false ] ] ].
 
@@ -84,21 +84,21 @@ VentanaRegistrarSolicitudDeTrabajo >> agregarCampos [
 	inputNombre
 		left: 10;
 		top: tituloNombre bottom + 20.
-	tituloDescripcion
+	tituloRubro
 		left: 10;
 		top: inputNombre bottom + 20.
-	checkboxRubro1
+	rurbro1
 		left: 10;
-		top: tituloDescripcion bottom + 20.
-	checkboxRubro2
+		top: tituloRubro bottom + 20.
+	rubro2
 		left: 130;
-		top: tituloDescripcion bottom + 20.
-	checkboxRubro3
+		top: tituloRubro bottom + 20.
+	rubro3
 		left: 250;
-		top: tituloDescripcion bottom + 20.
+		top: tituloRubro bottom + 20.
 	tituloValor
 		left: 10;
-		top: checkboxRubro1 bottom + 20.
+		top: rurbro1 bottom + 20.
 	inputValor
 		left: 10;
 		top: tituloValor bottom + 20
@@ -132,18 +132,18 @@ VentanaRegistrarSolicitudDeTrabajo >> agregarLista: aString [
 { #category : #accessing }
 VentanaRegistrarSolicitudDeTrabajo >> agregarRubros [
 
-	tituloDescripcion := Texto
+	tituloRubro := Texto
 		                     titulo: 'Marque su categoria(descripcion)'
 		                     tamanio: 20.
-	checkboxRubro1 := Checkbox nombre: 'Pintureria' tamanio: 100 @ 20.
-	checkboxRubro2 := Checkbox nombre: 'Colchoneria' tamanio: 100 @ 20.
-	checkboxRubro3 := Checkbox nombre: 'Electro' tamanio: 100 @ 20.
+	rurbro1 := Checkbox nombre: 'Pintureria' tamanio: 100 @ 20.
+	rubro2 := Checkbox nombre: 'Colchoneria' tamanio: 100 @ 20.
+	rubro3 := Checkbox nombre: 'Electro' tamanio: 100 @ 20.
 
 	self
-		addMorph: tituloDescripcion;
-		addMorph: checkboxRubro1;
-		addMorph: checkboxRubro2;
-		addMorph: checkboxRubro3
+		addMorph: tituloRubro;
+		addMorph: rurbro1;
+		addMorph: rubro2;
+		addMorph: rubro3
 ]
 
 { #category : #initialization }

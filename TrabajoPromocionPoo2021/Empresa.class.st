@@ -35,6 +35,16 @@ Empresa >> agregarSolicitud: unaSolicitud [
 colSolicitudesGeneradas add: unaSolicitud 
 ]
 
+{ #category : #getters }
+Empresa >> colToString: unaColeccion [
+
+	| txt |
+	txt := ' '.
+	unaColeccion do: [ :each | 
+		txt := txt , 'ID:' , each getID asString , '  ' ].
+	^ txt
+]
+
 { #category : #'as yet unclassified' }
 Empresa >> esPersona [
 
@@ -44,7 +54,9 @@ Empresa >> esPersona [
 { #category : #accessing }
 Empresa >> getColSolicitudesGeneradas [
 
-	^ colSolicitudesGeneradas
+
+
+	^ self colToString: colSolicitudesGeneradas 
 ]
 
 { #category : #getters }
@@ -82,11 +94,21 @@ Empresa >> iniciarPostulanteNombre: unNombre rubro: unRubro puntos: unosPuntos [
 	self getMaximo
 ]
 
+{ #category : #'as yet unclassified' }
+Empresa >> sacarSolicitud: unaSolicitud [
+
+colSolicitudesGeneradas remove: unaSolicitud.
+]
+
 { #category : #printing }
 Empresa >> toString [
 
-	^ 'Empresa: ' , nombre , String cr , 'Rubro: ' , rubro , String cr
-	  , 'Puntos: ' , puntos asString , String cr 
+	| col txt |
+	txt := super toString.
+	col := self colToString: colSolicitudesGeneradas .
+	^ txt, 'Rubro: ' , rubro , String cr , 'Puntos: '
+	  , puntos asString , String cr, 'Solicitudes Generadas: '
+	  , col asString , String cr.
 ]
 
 { #category : #'as yet unclassified' }

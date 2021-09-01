@@ -16,6 +16,18 @@ Propuesta class >> postulante: unPostulante	solicitud: unaSolicitud [
 	^nuevaPropuesta 
 ]
 
+{ #category : #accessing }
+Propuesta >> getPostulante [
+
+	^ postulante
+]
+
+{ #category : #accessing }
+Propuesta >> getSolicitud [
+
+	^ solicitud
+]
+
 { #category : #initialization }
 Propuesta >> iniciarPropuestaPostulante: unPostulante solicitud: unaSolicitud [
 postulante := unPostulante .

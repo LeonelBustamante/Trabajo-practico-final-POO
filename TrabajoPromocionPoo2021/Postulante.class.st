@@ -26,6 +26,12 @@ Postulante >> iniciarPostulanteNombre: unNombre [
 	nombre := unNombre
 ]
 
+{ #category : #printing }
+Postulante >> toString [
+
+	^ 'Empresa: ' , nombre, String cr.
+]
+
 { #category : #accessing }
 Postulante >> verificarAptitud: arg1 [ 
 	^ self subclassResponsibility

@@ -24,7 +24,8 @@ VentanaGenerarListado >> accionListadoEmpresa [
 { #category : #'as yet unclassified' }
 VentanaGenerarListado >> accionListadoFecha [
 
-	MiGestor colEmpresasSolicitantesToString .
+	| unaFecha |
+	MiGestor listadoSolicitudesPendientesEnFecha: unaFecha.
 	self
 		removeMorph: listadoEmpresa;
 		removeMorph: listadoFecha;

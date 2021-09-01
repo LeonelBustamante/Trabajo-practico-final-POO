@@ -103,6 +103,40 @@ GestorEmpleoVisual >> agregarLogo [
 
 ]
 
+{ #category : #'as yet unclassified' }
+GestorEmpleoVisual >> agregarReloj [
+
+	| morph temp myWindow |
+	myWindow := StandardWindow labelled: 'CLOCK'.
+	myWindow
+		extent: 405 @ 90;
+		top: 850;
+		left: 30;
+		beUnresizeable;
+		removeCloseBox;
+		removeCollapseBox;
+		removeExpandBox;
+		removeMenuBox;
+		beSticky.
+	self addMorph: myWindow.
+	morph := StringMorph new.
+
+
+	morph
+		color: Color white;
+		font: (LogicalFont familyName: 'Source Sans Pro' pointSize: 30).
+
+
+	myWindow addMorph: morph.
+
+	[ 
+	[ true ] whileTrue: [ 
+		morph
+			contents: Time now print24;
+			center: myWindow center.
+		1 second wait ] ] fork
+]
+
 { #category : #acciones }
 GestorEmpleoVisual >> cerrar [
 
@@ -117,5 +151,6 @@ GestorEmpleoVisual >> initialize [
 	self
 		agregarFondo;
 		agregarLogo;
-		agregarBotones
+		agregarBotones;
+		agregarReloj
 ]

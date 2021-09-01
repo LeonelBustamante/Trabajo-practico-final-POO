@@ -22,7 +22,8 @@ Combinada >> colToString: unaColeccion [
 
 	| txt |
 	txt := ' '.
-	unaColeccion do: [ :each | txt := txt , each , ' - ' ].
+	unaColeccion do: [ :each | 
+		txt := txt , each  , '  ' ].
 	^ txt
 ]
 
@@ -42,11 +43,10 @@ colProductos := unaColProductos.
 { #category : #printing }
 Combinada >> toString [
 
-	| col |
-	col := self colToString: colProductos.
-	^ 'Empresa combinada: ' , nombre , String cr , 'Rubro: ' , rubro
-	  , String cr , 'Puntos: ' , puntos asString , String cr
-	  , 'Productos: ' , col , String cr
+	| col txt |
+	txt := super toString.
+	col := self colToString: colProductos .
+	^ txt , 'Productos: ' , col , String cr
 ]
 
 { #category : #'as yet unclassified' }

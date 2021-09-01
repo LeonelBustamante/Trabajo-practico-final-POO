@@ -24,11 +24,8 @@ ConProductos class >> descripcion: unaDescripcion duracion: unaDuracion valor: u
 
 { #category : #getters }
 ConProductos >> colToString: unaColeccion [
-
-	| txt |
-	txt := ' '.
-	unaColeccion do: [ :each | txt := txt , each , ' - ' ].
-	^ txt
+	^String streamContents: [:s | 
+		unaColeccion do: [:each | s nextPutAll: each asString]]
 ]
 
 { #category : #'as yet unclassified' }
@@ -56,13 +53,8 @@ ConProductos >> iniciarSolicituDescripcion: unaDescripcion duracion: unaDuracion
 { #category : #accessing }
 ConProductos >> toString [
 
-	| col |
+	| col txt |
+	txt := super toString.
 	col := self colToString: colCestaProductos.
-
-
-	^ 'Solicitud con productos ID: ' , id asString , String cr
-	  , 'Descripcion: ' , descripcion , String cr , 'Tipo de pago: '
-	  , tipoPago , String cr , 'ValorTotal: ' , valor asString
-	  , String cr , 'Duracion servicio: ' , duracionServicio asString
-	  , String cr , 'Productos: ' , col , String cr
+	^ txt , String cr , 'Productos: ' , col , String cr
 ]

@@ -54,3 +54,9 @@ TextBox >> isEmpty [
 
 	^ self text asString = ''
 ]
+
+{ #category : #deAplicacion }
+TextBox >> isNotEmpty [
+
+	^ self text asString ~= ''
+]

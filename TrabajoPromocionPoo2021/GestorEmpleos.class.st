@@ -25,6 +25,19 @@ GestorEmpleos class >> crear [
 	^ gestor
 ]
 
+{ #category : #'as yet unclassified' }
+GestorEmpleos >> aceptarPropuestas [
+
+	| unaSolicitud |
+	colPropuestas do: [ :cadaPropuesta | 
+		unaSolicitud := cadaPropuesta getSolicitud.
+		(self estaEnColSolicitudesPendientes: unaSolicitud) ifTrue: [ 
+			colSolicitudesPendientes remove: unaSolicitud.
+			colSolicitudesResueltas add: unaSolicitud.
+			cadaPropuesta getPostulante esPersona ifFalse:[
+			cadaPropuesta getPostulante sacarSolicitud: unaSolicitud ] ]]
+]
+
 { #category : #accessing }
 GestorEmpleos >> colEmpresasSolicitantes [
 
@@ -93,6 +106,12 @@ GestorEmpleos >> colToString: unaColeccion [
 	^ txt
 ]
 
+{ #category : #'as yet unclassified' }
+GestorEmpleos >> estaEnColSolicitudesPendientes:unaSolicitud [
+
+^colSolicitudesPendientes  anySatisfy: [ :x | x getID  = unaSolicitud getID ]
+]
+
 { #category : #'generar propuestas' }
 GestorEmpleos >> generarPropuestas [
 
@@ -146,17 +165,24 @@ GestorEmpleos >> iniciarGestorEmpleo [
 	colSolicitudesResueltas := OrderedCollection new
 ]
 
+{ #category : #'as yet unclassified' }
+GestorEmpleos >> listadoSolicitudesPendientesEnFecha: unaFecha [
+|col|
+col:= colSolicitudesPendientes select: [ :x | x getFecha equals: unaFecha ].
+col:= self colToString: col.
+^col
+]
+
 { #category : #'registrar empresa solicitante' }
 GestorEmpleos >> registrarEmpresaSolicitante: unaEmpresa [
 
-	"Se recibe desde la interfaz grafica unaEmpresa creada y se carga en la coleccion"
-
 	| temp |
-	temp := colEmpresasSolicitantes anySatisfy: [ :x | 
-		        unaEmpresa getNombre = x getNombre ].
+	temp := colEmpresasSolicitantes anySatisfy: [ :x | unaEmpresa getNombre = x getNombre ].
 	temp ifFalse: [ 
 		colEmpresasSolicitantes add: unaEmpresa.
-		colPostulantes add: unaEmpresa ]
+		colPostulantes add: unaEmpresa ].
+	
+	self changed: colEmpresasSolicitantes
 ]
 
 { #category : #accessing }

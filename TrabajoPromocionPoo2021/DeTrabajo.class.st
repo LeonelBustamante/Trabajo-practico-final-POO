@@ -18,12 +18,3 @@ DeTrabajo >> deServicio [
 
 	^false
 ]
-
-{ #category : #accessing }
-DeTrabajo >> toString [
-
-	^ 'Solicitud trabajo ID: ' , id asString , String cr
-	  , 'Descripcion: ' , descripcion , String cr , 'Tipo de pago: '
-	  , tipoPago , String cr , 'Valor Total: ' , valor , String cr
-
-]

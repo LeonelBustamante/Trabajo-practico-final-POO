@@ -42,10 +42,8 @@ DeServicio >> iniciarSolicituDescripcion: unaDescripcion duracion: unaDuracion v
 
 { #category : #accessing }
 DeServicio >> toString [
-
-	^ 'Solicitud Servicio ID: ' , id asString , String cr
-	  , 'Descripcion: ' , descripcion , String cr , 'Tipo de pago: '
-	  , tipoPago , String cr , 'Valor Total: ' , valor asString
-	  , String cr , 'Duracion servicio: ' , duracionServicio asString
-	  , String cr 
+|txt|
+txt:= super toString.
+	^ txt, 'Duracion servicio: ' , duracionServicio asString
+	  , String cr
 ]

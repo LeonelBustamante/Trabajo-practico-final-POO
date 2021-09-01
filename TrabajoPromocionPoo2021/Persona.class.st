@@ -61,10 +61,11 @@ self iniciarPostulanteNombre: unNombre.
 { #category : #printing }
 Persona >> toString [
 
-	| col |
-	col := self colToString: colAptitudes.
-	^ 'Persona: ' , nombre , String cr , 'Aptitudes: ' , col , String cr
 
+	| col txt |
+	txt := super toString.
+	col := self colToString: colAptitudes .
+	^ txt,'Aptitudes: ' , col , String cr
 ]
 
 { #category : #'as yet unclassified' }

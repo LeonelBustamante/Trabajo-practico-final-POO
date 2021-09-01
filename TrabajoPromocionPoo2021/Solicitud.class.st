@@ -72,7 +72,10 @@ Solicitud >> iniciarSolicitudDescripcion: unaDescripcion valor: unValor [
 	IDContador := IDContador + 1
 ]
 
-{ #category : #accessing }
+{ #category : #printing }
 Solicitud >> toString [
-	^ self subclassResponsibility
+^'Solicitud Servicio ID: ' , id asString , String cr
+	  , 'Descripcion: ' , descripcion , String cr , 'Tipo de pago: '
+	  , tipoPago , String cr , 'Valor Total: ' , valor asString
+	  , String cr.
 ]
