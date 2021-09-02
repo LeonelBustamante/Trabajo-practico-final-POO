@@ -32,7 +32,7 @@ DeServicio >> deServicio [
 	
 ]
 
-{ #category : #initialization }
+{ #category : #'as yet unclassified' }
 DeServicio >> iniciarSolicituDescripcion: unaDescripcion duracion: unaDuracion valor: unValor tipoPago: unTipoPago [
 
 	self iniciarSolicitudDescripcion: unaDescripcion valor: unValor.
@@ -40,7 +40,7 @@ DeServicio >> iniciarSolicituDescripcion: unaDescripcion duracion: unaDuracion v
 	duracionServicio := unaDuracion
 ]
 
-{ #category : #accessing }
+{ #category : #'as yet unclassified' }
 DeServicio >> toString [
 |txt|
 txt:= super toString.

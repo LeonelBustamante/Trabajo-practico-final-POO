@@ -35,7 +35,7 @@ Empresa >> agregarSolicitud: unaSolicitud [
 colSolicitudesGeneradas add: unaSolicitud 
 ]
 
-{ #category : #getters }
+{ #category : #'as yet unclassified' }
 Empresa >> colToString: unaColeccion [
 
 	| txt |
@@ -51,7 +51,7 @@ Empresa >> esPersona [
 	^false
 ]
 
-{ #category : #accessing }
+{ #category : #'as yet unclassified' }
 Empresa >> getColSolicitudesGeneradas [
 
 
@@ -59,19 +59,19 @@ Empresa >> getColSolicitudesGeneradas [
 	^ self colToString: colSolicitudesGeneradas 
 ]
 
-{ #category : #getters }
+{ #category : #'as yet unclassified' }
 Empresa >> getMaximo [
 
 ^MAXIMO 
 ]
 
-{ #category : #getters }
+{ #category : #'as yet unclassified' }
 Empresa >> getPuntos [
 
 	^ puntos
 ]
 
-{ #category : #getters }
+{ #category : #'as yet unclassified' }
 Empresa >> getRubro [
 
 	^ rubro
@@ -84,7 +84,7 @@ Empresa >> hayFraude: iDVerificar [
 		  iDVerificar ~= unaSolicitud getID ]
 ]
 
-{ #category : #initialization }
+{ #category : #'as yet unclassified' }
 Empresa >> iniciarPostulanteNombre: unNombre rubro: unRubro puntos: unosPuntos [
 
 	self iniciarPostulanteNombre: unNombre.
@@ -100,7 +100,7 @@ Empresa >> sacarSolicitud: unaSolicitud [
 colSolicitudesGeneradas remove: unaSolicitud.
 ]
 
-{ #category : #printing }
+{ #category : #'as yet unclassified' }
 Empresa >> toString [
 
 	| col txt |

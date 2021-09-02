@@ -31,31 +31,31 @@ Solicitud >> deServicio [
 	^ self subclassResponsibility
 ]
 
-{ #category : #getters }
+{ #category : #'as yet unclassified' }
 Solicitud >> getDescripcion [
 
 	^ descripcion
 ]
 
-{ #category : #getters }
+{ #category : #'as yet unclassified' }
 Solicitud >> getFecha [
 
 	^ fecha
 ]
 
-{ #category : #accessing }
+{ #category : #'as yet unclassified' }
 Solicitud >> getID [
 
 	^ id
 ]
 
-{ #category : #getters }
+{ #category : #'as yet unclassified' }
 Solicitud >> getTipoPago [
 
 	^ tipoPago
 ]
 
-{ #category : #getters }
+{ #category : #'as yet unclassified' }
 Solicitud >> getValor [
 
 	^ valor
@@ -72,7 +72,7 @@ Solicitud >> iniciarSolicitudDescripcion: unaDescripcion valor: unValor [
 	IDContador := IDContador + 1
 ]
 
-{ #category : #printing }
+{ #category : #'as yet unclassified' }
 Solicitud >> toString [
 ^'Solicitud Servicio ID: ' , id asString , String cr
 	  , 'Descripcion: ' , descripcion , String cr , 'Tipo de pago: '

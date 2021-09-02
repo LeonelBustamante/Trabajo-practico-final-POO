@@ -17,7 +17,7 @@ Combinada class >> nombre: unNombre rubro: unRubro puntos: unosPuntos colProduct
 	^ empresa
 ]
 
-{ #category : #getters }
+{ #category : #'as yet unclassified' }
 Combinada >> colToString: unaColeccion [
 
 	| txt |
@@ -27,20 +27,20 @@ Combinada >> colToString: unaColeccion [
 	^ txt
 ]
 
-{ #category : #getters }
+{ #category : #'as yet unclassified' }
 Combinada >> getColProductos [
 
 	^ colProductos
 ]
 
-{ #category : #initialization }
+{ #category : #'as yet unclassified' }
 Combinada >> iniciarPostulanteNombre: unNombre  rubro: unRubro  puntos: unosPuntos colProductos: unaColProductos [
 
 self iniciarPostulanteNombre: unNombre rubro:  unRubro puntos: unosPuntos .
 colProductos := unaColProductos.
 ]
 
-{ #category : #printing }
+{ #category : #'as yet unclassified' }
 Combinada >> toString [
 
 	| col txt |

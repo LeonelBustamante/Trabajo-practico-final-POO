@@ -25,7 +25,7 @@ Persona class >> setMaximoIndividual: unMAXIMOINDIVIDUAL [
 MAXIMOINDIVIDUAL := unMAXIMOINDIVIDUAL 
 ]
 
-{ #category : #printing }
+{ #category : #'as yet unclassified' }
 Persona >> colToString: unaColeccion [
 
 	| txt |
@@ -40,25 +40,25 @@ Persona >> esPersona [
 	^true
 ]
 
-{ #category : #getters }
+{ #category : #'as yet unclassified' }
 Persona >> getColAptitudes [
 
 	^ colAptitudes
 ]
 
-{ #category : #getters }
+{ #category : #'as yet unclassified' }
 Persona >> getMaximoIndividual [ 
 ^MAXIMOINDIVIDUAL 
 ]
 
-{ #category : #initialization }
+{ #category : #'as yet unclassified' }
 Persona >> iniciarPostulanteNombre: unNombre aptitudes: unaColAptitudes [
 self iniciarPostulanteNombre: unNombre.
 	colAptitudes := unaColAptitudes.
 	self getMaximoIndividual
 ]
 
-{ #category : #printing }
+{ #category : #'as yet unclassified' }
 Persona >> toString [
 
 

@@ -40,66 +40,66 @@ GestorEmpleos >> aceptarPropuestas [
 		changed: colPropuestas.
 ]
 
-{ #category : #accessing }
+{ #category : #'as yet unclassified' }
 GestorEmpleos >> colEmpresasSolicitantes [
 
 	^ colEmpresasSolicitantes
 ]
 
-{ #category : #getters }
+{ #category : #'as yet unclassified' }
 GestorEmpleos >> colEmpresasSolicitantesToString [
 	^self colToString: colEmpresasSolicitantes.
 ]
 
-{ #category : #accessing }
+{ #category : #'as yet unclassified' }
 GestorEmpleos >> colPostulantes [
 
 	^ colPostulantes
 ]
 
-{ #category : #getters }
+{ #category : #'as yet unclassified' }
 GestorEmpleos >> colPostulantesToString [
 
 	^ self colToString: colPostulantes
 ]
 
-{ #category : #accessing }
+{ #category : #'as yet unclassified' }
 GestorEmpleos >> colPropuestas [
 
 	^ colPropuestas
 ]
 
-{ #category : #getters }
+{ #category : #'as yet unclassified' }
 GestorEmpleos >> colPropuestasToString [
 
 	^ self colToString: colPropuestas 
 ]
 
-{ #category : #accessing }
+{ #category : #'as yet unclassified' }
 GestorEmpleos >> colSolicitudesPendientes [
 
 	^ colSolicitudesPendientes
 ]
 
-{ #category : #getters }
+{ #category : #'as yet unclassified' }
 GestorEmpleos >> colSolicitudesPendientesToString [
 
 	^ self colToString: colSolicitudesPendientes 
 ]
 
-{ #category : #accessing }
+{ #category : #'as yet unclassified' }
 GestorEmpleos >> colSolicitudesResueltas [
 
 	^ colSolicitudesResueltas
 ]
 
-{ #category : #getters }
+{ #category : #'as yet unclassified' }
 GestorEmpleos >> colSolicitudesResueltasToString [
 
-	^ self colToString: colSolicitudesResueltas 
+	^ self changed: colSolicitudesResueltas
 ]
 
-{ #category : #getters }
+{ #category : #'as yet unclassified' }
 GestorEmpleos >> colToString: unaColeccion [
 
 	| txt |
@@ -114,7 +114,7 @@ GestorEmpleos >> estaEnColSolicitudesPendientes:unaSolicitud [
 ^colSolicitudesPendientes  anySatisfy: [ :x | x getID  = unaSolicitud getID ]
 ]
 
-{ #category : #'generar propuestas' }
+{ #category : #'as yet unclassified' }
 GestorEmpleos >> generarPropuestas [
 
 	| res propuesta postulanteApto |
@@ -154,7 +154,7 @@ GestorEmpleos >> generarPropuestas [
 					colPropuestas add: propuesta ] ] ] ].self changed: colPropuestas 
 ]
 
-{ #category : #initialization }
+{ #category : #'as yet unclassified' }
 GestorEmpleos >> iniciarGestorEmpleo [
 
 	colEmpresasSolicitantes := OrderedCollection new.
@@ -166,14 +166,26 @@ GestorEmpleos >> iniciarGestorEmpleo [
 ]
 
 { #category : #'as yet unclassified' }
-GestorEmpleos >> listadoSolicitudesPendientesEnFecha: unaFecha [
-|col|
-col:= colSolicitudesPendientes select: [ :x | x getFecha equals: unaFecha ].
-col:= self colToString: col.
-^col
+GestorEmpleos >> listadoSolicitudesPendientesDeEmpresa: unaEmpresa [
+
+
+	self changed:
+		(unaEmpresa colSolicitudesGeneradas select: [ :cadaSolEnGeneradas | 
+			 colEmpresasSolicitantes anySatisfy: [ :cadaSolEnPendientes | 
+				 cadaSolEnPendientes getID = cadaSolEnGeneradas getID ] ])
 ]
 
-{ #category : #'registrar empresa solicitante' }
+{ #category : #'as yet unclassified' }
+GestorEmpleos >> listadoSolicitudesPendientesEnFecha: unaFecha [
+
+	| col |
+	col := colSolicitudesPendientes select: [ :x | 
+		       x getFecha equals: unaFecha ].
+	col := self colToString: col.
+	self changed: col
+]
+
+{ #category : #'as yet unclassified' }
 GestorEmpleos >> registrarEmpresaSolicitante: unaEmpresa [
 
 	| temp |
@@ -185,7 +197,7 @@ GestorEmpleos >> registrarEmpresaSolicitante: unaEmpresa [
 	self changed: colEmpresasSolicitantes
 ]
 
-{ #category : #accessing }
+{ #category : #'as yet unclassified' }
 GestorEmpleos >> registrarPostulante: unPostulante [
 
 	| temp |
@@ -195,7 +207,7 @@ GestorEmpleos >> registrarPostulante: unPostulante [
 	self changed: colPostulantes 
 ]
 
-{ #category : #'registrar solicitud' }
+{ #category : #'as yet unclassified' }
 GestorEmpleos >> registrarSolicitud: unaSolicitud postulante: unNombrePostualante [
 
 	| propietariaSolicitud |

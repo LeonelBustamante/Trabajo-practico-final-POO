@@ -22,7 +22,7 @@ ConProductos class >> descripcion: unaDescripcion duracion: unaDuracion valor: u
 	^ nuevaSol
 ]
 
-{ #category : #getters }
+{ #category : #'as yet unclassified' }
 ConProductos >> colToString: unaColeccion [
 	^String streamContents: [:s | 
 		unaColeccion do: [:each | s nextPutAll: each asString]]
@@ -33,7 +33,7 @@ ConProductos >> conProductos [
 	^ true
 ]
 
-{ #category : #accessing }
+{ #category : #'as yet unclassified' }
 ConProductos >> getColCestaProductos [
 
 	^ colCestaProductos
@@ -50,7 +50,7 @@ ConProductos >> iniciarSolicituDescripcion: unaDescripcion duracion: unaDuracion
 	colCestaProductos := unaColeccion
 ]
 
-{ #category : #accessing }
+{ #category : #'as yet unclassified' }
 ConProductos >> toString [
 
 	| col txt |

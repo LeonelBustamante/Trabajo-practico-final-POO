@@ -12,7 +12,7 @@ VentanaGenerarListado >> actualizarTabla:unParametro [
 
 { #category : #'as yet unclassified' }
 VentanaGenerarListado >> agregarBoton [
- 
+
 	| listadoEmpresa listadoFecha listadoResueltas |
 	listadoEmpresa := Boton
 		                  nombre: 'Generar Listados por empresa'
@@ -28,31 +28,28 @@ VentanaGenerarListado >> agregarBoton [
 		addMorphCentered: listadoEmpresa;
 		addMorphCentered: listadoFecha;
 		addMorphCentered: listadoResueltas.
-
+		
 	MiGestor addDependent: self.
 
 	listadoEmpresa
 		modalBotonConfirmar;
 		top: 300;
 		mouseAction: [ 
-			MiGestor colEmpresasSolicitantesToString.
 			self
 				removeMorph: listadoEmpresa;
 				removeMorph: listadoFecha;
 				removeMorph: listadoResueltas;
-				agregarLista: 'Listado por Empresa' ].
+				porEmpresa ].
 
 	listadoFecha
 		modalBotonConfirmar;
 		top: 400;
 		mouseAction: [ 
-			| unaFecha |
 			self
 				removeMorph: listadoEmpresa;
 				removeMorph: listadoFecha;
 				removeMorph: listadoResueltas;
-				agregarLista: 'Listado por Fecha'.
-			MiGestor listadoSolicitudesPendientesEnFecha: unaFecha ].
+				crearFecha ].
 
 	listadoResueltas
 		modalBotonConfirmar;
@@ -61,9 +58,8 @@ VentanaGenerarListado >> agregarBoton [
 			self
 				removeMorph: listadoEmpresa;
 				removeMorph: listadoFecha;
-				removeMorph: listadoResueltas;
-				agregarLista: 'Solicitudes resueltas';
-				update: MiGestor colSolicitudesResueltas ]
+				removeMorph: listadoResueltas.
+			MiGestor colEmpresasSolicitantesToString ]
 ]
 
 { #category : #'as yet unclassified' }
@@ -83,8 +79,69 @@ VentanaGenerarListado >> agregarLista: aString [
 ]
 
 { #category : #'as yet unclassified' }
+VentanaGenerarListado >> crearFecha [
+
+	| go tituloDuracion advertencia inputDias |
+	tituloDuracion := Texto titulo: 'Ingrese una duracion' tamanio: 20.
+	advertencia := Texto titulo: 'Formato: YYYY-MM-DD' tamanio: 10.
+	inputDias := TextBox
+		             nombre: 'Ingrese aqui el valor'
+		             tamanio: 450 @ 90.
+	go := Boton nombre: 'GO' tamanio: 30 @ 30.
+	self
+		addMorphCentered: tituloDuracion;
+		addMorphCentered: advertencia;
+		addMorphCentered: inputDias;
+		addMorphCentered: go.
+
+	tituloDuracion
+		center: self center;
+		left: self left + 500.
+
+	advertencia
+		left: tituloDuracion left;
+		top: tituloDuracion bottom + 10.
+
+	inputDias
+		left: tituloDuracion left;
+		top: advertencia bottom + 20.
+	go
+		top: inputDias top;
+		left: inputDias right + 10;
+		mouseAction: [ 
+			inputDias isNotEmpty ifTrue: [ 
+					MiGestor listadoSolicitudesPendientesEnFecha: inputDias input.
+					self agregarLista: 'Listado por Fecha' ] ]
+]
+
+{ #category : #'as yet unclassified' }
 VentanaGenerarListado >> initialize [
 
 	super initialize.
 	self agregarBoton
+]
+
+{ #category : #'as yet unclassified' }
+VentanaGenerarListado >> porEmpresa [
+
+	| selecEmpresa go nombres |
+	nombres := OrderedCollection new.
+	nombres := MiGestor colEmpresasSolicitantes collect: [ :x | 
+		           x getNombre ].
+	selecEmpresa := SearchMorph new.
+	selecEmpresa extent: 500@30 ;searchList: nombres.
+	go := Boton nombre: 'GO' tamanio: 30 @ 30.
+	self
+		addMorph: selecEmpresa;
+		addMorphCentered: go.
+
+	selecEmpresa center: self center.
+
+	go
+		top: selecEmpresa top;
+		left: selecEmpresa right + 20;
+		mouseAction: [ 
+			self
+				agregarLista: 'Solicitudes de ';
+				update: MiGestor colSolicitudesResueltas ]
 ]

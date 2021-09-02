@@ -13,26 +13,26 @@ Postulante >> esPersona [
 	^ self subclassResponsibility
 ]
 
-{ #category : #getters }
+{ #category : #'as yet unclassified' }
 Postulante >> getNombre [
 
 	^ nombre
 ]
 
-{ #category : #initialization }
+{ #category : #'as yet unclassified' }
 Postulante >> iniciarPostulanteNombre: unNombre [
 "Postulante es abstracta"
 
 	nombre := unNombre
 ]
 
-{ #category : #printing }
+{ #category : #'as yet unclassified' }
 Postulante >> toString [
 
 	^ 'Empresa: ' , nombre, String cr.
 ]
 
-{ #category : #accessing }
+{ #category : #'as yet unclassified' }
 Postulante >> verificarAptitud: arg1 [ 
 	^ self subclassResponsibility
 ]

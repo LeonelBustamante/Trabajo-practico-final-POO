@@ -16,25 +16,25 @@ Propuesta class >> postulante: unPostulante	solicitud: unaSolicitud [
 	^nuevaPropuesta 
 ]
 
-{ #category : #accessing }
+{ #category : #'as yet unclassified' }
 Propuesta >> getPostulante [
 
 	^ postulante
 ]
 
-{ #category : #accessing }
+{ #category : #'as yet unclassified' }
 Propuesta >> getSolicitud [
 
 	^ solicitud
 ]
 
-{ #category : #initialization }
+{ #category : #'as yet unclassified' }
 Propuesta >> iniciarPropuestaPostulante: unPostulante solicitud: unaSolicitud [
 postulante := unPostulante .
 solicitud := unaSolicitud 
 ]
 
-{ #category : #printing }
+{ #category : #'as yet unclassified' }
 Propuesta >> toString [
 
 	^ 'Postulante: ' , postulante getNombre , String cr , 'Solicitud: '
