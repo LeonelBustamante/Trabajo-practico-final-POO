@@ -13,6 +13,11 @@ Postulante >> esPersona [
 	^ self subclassResponsibility
 ]
 
+{ #category : #accessing }
+Postulante >> getMaximo [
+	^ self subclassResponsibility
+]
+
 { #category : #'as yet unclassified' }
 Postulante >> getNombre [
 

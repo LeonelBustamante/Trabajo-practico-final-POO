@@ -8,12 +8,12 @@ Class {
 }
 
 { #category : #'as yet unclassified' }
-Combinada class >> nombre: unNombre rubro: unRubro puntos: unosPuntos colProductos: unaColProductos [
+Combinada class >> nombre: unNombre rubro: unRubro puntos: unosPuntos tipo:unTipo colProductos: unaColProductos [ 
 
 	| empresa |
 	empresa := self new.
 	empresa
-		iniciarPostulanteNombre: unNombre rubro: unRubro puntos: unosPuntos colProductos: unaColProductos.
+		iniciarPostulanteNombre: unNombre rubro: unRubro puntos: unosPuntos tipo:unTipo colProductos: unaColProductos.
 	^ empresa
 ]
 
@@ -34,9 +34,9 @@ Combinada >> getColProductos [
 ]
 
 { #category : #'as yet unclassified' }
-Combinada >> iniciarPostulanteNombre: unNombre  rubro: unRubro  puntos: unosPuntos colProductos: unaColProductos [
+Combinada >> iniciarPostulanteNombre: unNombre rubro: unRubro puntos: unosPuntos tipo:unTipo colProductos: unaColProductos [
 
-self iniciarPostulanteNombre: unNombre rubro:  unRubro puntos: unosPuntos .
+self iniciarPostulanteNombre: unNombre rubro:  unRubro puntos: unosPuntos tipo: unTipo .
 colProductos := unaColProductos.
 ]
 

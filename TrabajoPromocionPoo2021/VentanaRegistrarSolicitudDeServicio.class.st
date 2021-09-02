@@ -22,7 +22,7 @@ VentanaRegistrarSolicitudDeServicio >> agregarBoton [
 	| botonRegistro |
 	botonRegistro := Boton nombre: 'Registrar' tamanio: 200 @ 30.
 	self addMorphCentered: botonRegistro.
-		botonRegistro
+	botonRegistro
 		modalBotonConfirmar;
 		top: self bottom - 20.
 
@@ -76,6 +76,7 @@ VentanaRegistrarSolicitudDeServicio >> agregarBoton [
 		controlEmpresa & controlRubro & controlTP & inputNombre isNotEmpty
 		& inputValor isNotEmpty & inputNombre isNotEmpty ifTrue: [ 
 			| unaColCestaProductos |
+			x := x = 0 ifTrue: [ tipoPago := 'PAGO POR TRABAJO' ] ifFalse: [ x ].
 			unaColCestaProductos := self cargaProductos.
 			unaColCestaProductos
 				ifNil: [ 
@@ -99,9 +100,9 @@ VentanaRegistrarSolicitudDeServicio >> agregarBoton [
 { #category : #'as yet unclassified' }
 VentanaRegistrarSolicitudDeServicio >> agregarCampos [
 
-	| advertencia tituloDuracion tituloTipoPago tituloProductos tituloNombre tituloValor tituloRubro|
+	| advertencia tituloDuracion tituloTipoPago tituloProductos tituloNombre tituloValor tituloRubro |
 	tituloNombre := Texto titulo: 'Ingrese el nombre' tamanio: 20.
-	inputNombre := TextBox 
+	inputNombre := TextBox
 		               nombre: 'Ingrese aqui el nombre'
 		               tamanio: 450 @ 90.
 
@@ -119,9 +120,9 @@ VentanaRegistrarSolicitudDeServicio >> agregarCampos [
 		              tamanio: 450 @ 90.
 
 	tituloTipoPago := Texto titulo: 'Ingrese tipo de pago' tamanio: 20.
-	tipoPago1 := Checkbox nombre: 'Diario' tamanio: 100 @ 20.
-	tipoPago2 := Checkbox nombre: 'Semanal' tamanio: 100 @ 20.
-	tipoPago3 := Checkbox nombre: 'Mensual' tamanio: 100 @ 20.
+	tipoPago1 := Checkbox nombre: 'DIARIO' tamanio: 100 @ 20.
+	tipoPago2 := Checkbox nombre: 'SEMANAL' tamanio: 100 @ 20.
+	tipoPago3 := Checkbox nombre: 'MENSUAL' tamanio: 100 @ 20.
 
 
 	tituloRubro := Texto
@@ -280,4 +281,32 @@ VentanaRegistrarSolicitudDeServicio >> initialize [
 		agregarCampos;
 		agregarBoton;
 		update: MiGestor colSolicitudesPendientes
+]
+
+{ #category : #'as yet unclassified' }
+VentanaRegistrarSolicitudDeServicio >> valorAPagar: unTipoPago [
+
+^	[(unTipoPago = 'PAGO POR TRABAJO') | (unTipoPago = 'PAGO POR DIA')]  ifTrue: [1] ifFalse: [ unTipoPago = 'PAGO POR SEMANA' ifTrue: 7 ifFalse: 30 ]
+]
+
+{ #category : #'as yet unclassified' }
+VentanaRegistrarSolicitudDeServicio >> verficarPago: x [
+| res  |
+res := 'FECHA'.
+
+	res := x = 0
+		       ifTrue: [ 'PAGO POR TRABAJO' ]
+		       ifFalse: [ res ].
+	
+	res := ((res = 'PAGO POR TRABAJO') = false) & (tipoPago1 estado | ((x > 0) & (x < 7) & (tipoPago2 estado | tipoPago3 estado)))
+		       ifTrue: [ 'PAGO POR DIA' ]
+		       ifFalse: [ res ].
+		
+	res := (([(res = 'PAGO POR TRABAJO') | (res = 'PAGO POR DIA')] = false) & (tipoPago2 estado | (x > 0 & x < 30 & tipoPago3 estado)))
+		       ifTrue: [ tipoPago1 estado ifTrue:['PAGO POR DIA']ifFalse:['PAGO POR SEMANA']]
+		       ifFalse: [ res ].
+
+	res:= (([(res = 'PAGO POR TRABAJO') | (res = 'PAGO POR DIA') | (res = 'PAGO POR SEMANA')] = false) & (tipoPago3 estado | (x > 30) ))
+			ifTrue: [ 'PAGO POR MES' ] ifFalse: [res].
+^res
 ]

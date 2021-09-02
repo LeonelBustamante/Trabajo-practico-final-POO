@@ -56,5 +56,5 @@ ConProductos >> toString [
 	| col txt |
 	txt := super toString.
 	col := self colToString: colCestaProductos.
-	^ txt , String cr , 'Productos: ' , col , String cr
+	^ txt , String cr , 'Productos: ' , col , ' (ConProductos) ',String cr
 ]

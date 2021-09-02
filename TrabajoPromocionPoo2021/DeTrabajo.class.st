@@ -18,3 +18,11 @@ DeTrabajo >> deServicio [
 
 	^false
 ]
+
+{ #category : #printing }
+DeTrabajo >> toString [
+
+	| txt |
+	txt := super toString.
+	^ txt , '(DeTrabajo) ' , String cr
+]

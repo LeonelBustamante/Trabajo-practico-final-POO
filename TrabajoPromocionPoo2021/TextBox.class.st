@@ -6,6 +6,7 @@ Class {
 
 { #category : #constructor }
 TextBox class >> nombre: aText tamanio: aSize [
+
 	| temp |
 	temp := self new.
 	temp
@@ -15,7 +16,8 @@ TextBox class >> nombre: aText tamanio: aSize [
 				 familyName: StandardFonts defaultFont familyName
 				 pointSize: 20);
 		extent: aSize;
-		color: Color transparent;
+		color: (Color r: 0.38 g: 0.47 b: 0.58);
+		ghostColor: Color white;
 		borderColor: Color black.
 
 	^ temp

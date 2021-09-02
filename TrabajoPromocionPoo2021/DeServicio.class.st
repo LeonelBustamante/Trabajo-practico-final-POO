@@ -32,6 +32,12 @@ DeServicio >> deServicio [
 	
 ]
 
+{ #category : #accessing }
+DeServicio >> duracionServicio [
+
+	^ duracionServicio
+]
+
 { #category : #'as yet unclassified' }
 DeServicio >> iniciarSolicituDescripcion: unaDescripcion duracion: unaDuracion valor: unValor tipoPago: unTipoPago [
 
@@ -42,8 +48,8 @@ DeServicio >> iniciarSolicituDescripcion: unaDescripcion duracion: unaDuracion v
 
 { #category : #'as yet unclassified' }
 DeServicio >> toString [
-|txt|
-txt:= super toString.
-	^ txt, 'Duracion servicio: ' , duracionServicio asString
-	  , String cr
+
+	| txt |
+	txt := super toString.
+	^ txt , 'Duracion servicio: ' , duracionServicio asString ,' (DeServicio) ', String cr
 ]

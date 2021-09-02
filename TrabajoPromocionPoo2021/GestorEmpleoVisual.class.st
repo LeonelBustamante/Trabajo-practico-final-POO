@@ -95,12 +95,13 @@ GestorEmpleoVisual >> agregarFondo [
 { #category : #'as yet unclassified' }
 GestorEmpleoVisual >> agregarLogo [
 
+
 	| logo |
 	logo := 'TrabajoAr' asMorph.
 	logo font: (LogicalFont familyName: 'Zen Tokyo Zoo' pointSize: 60).
 	logo left: 30; top: 150.
-	self addMorph: logo.
-
+	logo color: (Color r: 0.38 g: 0.47 b: 0.58).
+	self addMorph: logo
 ]
 
 { #category : #'as yet unclassified' }

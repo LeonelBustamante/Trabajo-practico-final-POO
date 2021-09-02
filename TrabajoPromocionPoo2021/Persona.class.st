@@ -47,7 +47,7 @@ Persona >> getColAptitudes [
 ]
 
 { #category : #'as yet unclassified' }
-Persona >> getMaximoIndividual [ 
+Persona >> getMaximo [ 
 ^MAXIMOINDIVIDUAL 
 ]
 
@@ -55,7 +55,7 @@ Persona >> getMaximoIndividual [
 Persona >> iniciarPostulanteNombre: unNombre aptitudes: unaColAptitudes [
 self iniciarPostulanteNombre: unNombre.
 	colAptitudes := unaColAptitudes.
-	self getMaximoIndividual
+	self getMaximo
 ]
 
 { #category : #'as yet unclassified' }

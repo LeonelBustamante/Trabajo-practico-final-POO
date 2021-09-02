@@ -12,7 +12,8 @@ Class {
 		'producto3',
 		'producto4',
 		'producto5',
-		'producto6'
+		'producto6',
+		'tipoEmpresa'
 	],
 	#category : #'TrabajoPromocionPoo2021-Visual'
 }
@@ -48,22 +49,25 @@ VentanaRegistrarEmpresaSolicitante >> agregarBoton [
 							ifFalse: [ controlRubro := false ] ] ].
 
 		"VERIFICACION DE CAMPOS"
-		inputNombre isNotEmpty & inputPuntos isNotEmpty & controlRubro
+		inputNombre isNotEmpty & inputPuntos isNotEmpty & controlRubro 
 			ifTrue: [ 
 				| unaColProductos |
 				unaColProductos := self cargaProductos.
-				unaColProductos ifNotNil: [ 
-					unaEmpresa := Combinada
-						              nombre: inputNombre input
-						              rubro: rubro
-						              puntos: inputPuntos input
-						              colProductos: unaColProductos ] 
-			ifNil: [ 
-				unaEmpresa := Empresa
-					              nombre: inputNombre input
-					              rubro: rubro
-					              puntos: inputPuntos input ].
-		MiGestor registrarEmpresaSolicitante: unaEmpresa ]]
+				unaColProductos
+					ifNotNil: [ 
+						unaEmpresa := Combinada
+							              nombre: inputNombre input
+							              rubro: rubro
+							              puntos: inputPuntos input
+							              tipo: tipoEmpresa selectedItem
+							              colProductos: unaColProductos.MiGestor registrarEmpresaSolicitante: unaEmpresa ]
+					ifNil: [ 
+						unaEmpresa := Empresa
+							              nombre: inputNombre input
+							              rubro: rubro
+							              puntos: inputPuntos input
+							              tipo: tipoEmpresa selectedItem .MiGestor registrarEmpresaSolicitante: unaEmpresa].
+				 ] ]
 ]
 
 { #category : #'as yet unclassified' }
@@ -71,7 +75,7 @@ VentanaRegistrarEmpresaSolicitante >> agregarCampos [
 
 	"Variables"
 
-	| tituloNombre tituloPuntos tituloRubro tituloProductos |
+	| tituloNombre tituloPuntos tituloRubro tituloProductos tituloTipo|
 	tituloNombre := Texto titulo: 'Ingrese el nombre' tamanio: 20.
 	inputNombre := TextBox nombre: 'Ingrese el nombre' tamanio: 450 @ 90.
 
@@ -93,8 +97,13 @@ VentanaRegistrarEmpresaSolicitante >> agregarCampos [
 	producto5 := Checkbox nombre: 'Monitor' tamanio: 100 @ 20.
 	producto6 := Checkbox nombre: 'Teclado' tamanio: 100 @ 20.
 
+	tituloTipo := Texto titulo: 'Ingrese el tipo' tamanio: 20.
+	tipoEmpresa := SearchMorph new.
+	tipoEmpresa extent: 450@50 ;searchList: #( 'EMPRESA UNIFORME' 'EMPRESA PUNTUAL').
+
 	"Agregar Morph"
 	self
+	addMorph: tituloTipo ;addMorph:tipoEmpresa;
 		addMorph: tituloNombre;
 		addMorph: inputNombre;
 		addMorph: tituloRubro;
@@ -159,7 +168,13 @@ VentanaRegistrarEmpresaSolicitante >> agregarCampos [
 		top: tituloProductos bottom + 20.
 	producto6
 		left: self left + 250;
-		top: producto1 bottom + 20
+		top: producto1 bottom + 20.
+	tituloTipo  
+		left: self left + 10;
+		top: producto2  bottom + 20.
+	tipoEmpresa 
+		left: self left + 10;
+		top: tituloTipo  bottom + 20
 ]
 
 { #category : #'as yet unclassified' }

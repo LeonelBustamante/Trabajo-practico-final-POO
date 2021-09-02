@@ -4,7 +4,8 @@ Class {
 	#instVars : [
 		'rubro',
 		'puntos',
-		'colSolicitudesGeneradas'
+		'colSolicitudesGeneradas',
+		'tipoActividad'
 	],
 	#classVars : [
 		'MAXIMO'
@@ -13,14 +14,15 @@ Class {
 }
 
 { #category : #'as yet unclassified' }
-Empresa class >> nombre: unNombre rubro: unRubro puntos: unosPuntos [
+Empresa class >> nombre: unNombre rubro: unRubro puntos: unosPuntos tipo:unTipo [
 
 	| empresa |
 	empresa := self new.
 	empresa
 		iniciarPostulanteNombre: unNombre
 		rubro: unRubro
-		puntos: unosPuntos.
+		puntos: unosPuntos
+		tipo: unTipo.
 	^ empresa
 ]
 
@@ -85,12 +87,13 @@ Empresa >> hayFraude: iDVerificar [
 ]
 
 { #category : #'as yet unclassified' }
-Empresa >> iniciarPostulanteNombre: unNombre rubro: unRubro puntos: unosPuntos [
+Empresa >> iniciarPostulanteNombre: unNombre rubro: unRubro puntos: unosPuntos tipo: unTipo [
 
 	self iniciarPostulanteNombre: unNombre.
 	rubro := unRubro.
 	puntos := unosPuntos.
 	colSolicitudesGeneradas := OrderedCollection new.
+	tipoActividad := unTipo.
 	self getMaximo
 ]
 
@@ -100,6 +103,12 @@ Empresa >> sacarSolicitud: unaSolicitud [
 colSolicitudesGeneradas remove: unaSolicitud.
 ]
 
+{ #category : #accessing }
+Empresa >> tipoActividad [
+
+	^ tipoActividad
+]
+
 { #category : #'as yet unclassified' }
 Empresa >> toString [
 
@@ -107,7 +116,8 @@ Empresa >> toString [
 	txt := super toString.
 	col := self colToString: colSolicitudesGeneradas .
 	^ txt, 'Rubro: ' , rubro , String cr , 'Puntos: '
-	  , puntos asString , String cr, 'Solicitudes Generadas: '
+	  , puntos asString ,String cr , 'Tipo Actividad: '
+	  , tipoActividad  , String cr, 'Solicitudes Generadas: '
 	  , col asString , String cr.
 ]
 

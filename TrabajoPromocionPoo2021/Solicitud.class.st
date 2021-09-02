@@ -74,8 +74,9 @@ Solicitud >> iniciarSolicitudDescripcion: unaDescripcion valor: unValor [
 
 { #category : #'as yet unclassified' }
 Solicitud >> toString [
-^'Solicitud Servicio ID: ' , id asString , String cr
+
+	^ 'Solicitud ID: ' , id asString , String cr
 	  , 'Descripcion: ' , descripcion , String cr , 'Tipo de pago: '
 	  , tipoPago , String cr , 'Valor Total: ' , valor asString
-	  , String cr.
+	  , String cr
 ]

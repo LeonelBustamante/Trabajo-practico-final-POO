@@ -37,6 +37,6 @@ solicitud := unaSolicitud
 { #category : #'as yet unclassified' }
 Propuesta >> toString [
 
-	^ 'Postulante: ' , postulante getNombre , String cr , 'Solicitud: '
-	  , solicitud getID asString , String cr 
+	^ postulante toString , 'Maximo: ' , postulante getMaximo asString
+	  , String cr , String cr , solicitud toString , String cr
 ]

@@ -9,9 +9,13 @@ Texto class >> titulo: nombreCampo [
 
 	| temp |
 	temp := self new.
-	temp contents: nombreCampo; font: (LogicalFont
-			 familyName: StandardFonts defaultFont familyName
-			 pointSize: 30).
+	temp
+		contents: nombreCampo;
+		font: (LogicalFont
+				 familyName: StandardFonts defaultFont familyName
+				 pointSize: 30).
+				
+	temp color: (Color r: 0.38 g: 0.47 b: 0.58).
 	^ temp
 ]
 
@@ -20,8 +24,10 @@ Texto class >> titulo: nombreCampo tamanio: tamanio [
 
 	| temp |
 	temp := self new.
-	temp contents: nombreCampo; font: (LogicalFont
-			 familyName: StandardFonts defaultFont familyName
-			 pointSize: tamanio).
+	temp
+		contents: nombreCampo;
+		font: (LogicalFont familyName: StandardFonts defaultFont familyName pointSize: tamanio).
+		
+	temp color: (Color r: 0.38 g: 0.47 b: 0.58).
 	^ temp
 ]
