@@ -28,7 +28,7 @@ VentanaGenerarListado >> agregarBoton [
 		addMorphCentered: listadoEmpresa;
 		addMorphCentered: listadoFecha;
 		addMorphCentered: listadoResueltas.
-		
+
 	MiGestor addDependent: self.
 
 	listadoEmpresa
@@ -58,7 +58,8 @@ VentanaGenerarListado >> agregarBoton [
 			self
 				removeMorph: listadoEmpresa;
 				removeMorph: listadoFecha;
-				removeMorph: listadoResueltas.
+				removeMorph: listadoResueltas;
+								agregarLista: 'Solicitudes Resueltas '.
 			MiGestor colEmpresasSolicitantesToString ]
 ]
 
@@ -110,8 +111,8 @@ VentanaGenerarListado >> crearFecha [
 		left: inputDias right + 10;
 		mouseAction: [ 
 			inputDias isNotEmpty ifTrue: [ 
-					MiGestor listadoSolicitudesPendientesEnFecha: inputDias input.
-					self agregarLista: 'Listado por Fecha' ] ]
+					self agregarLista: 'Listado por Fecha'.
+					MiGestor listadoSolicitudesPendientesEnFecha: inputDias input ] ]
 ]
 
 { #category : #'as yet unclassified' }

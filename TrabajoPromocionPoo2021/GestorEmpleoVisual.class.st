@@ -14,7 +14,7 @@ Class {
 	#category : #'TrabajoPromocionPoo2021-Visual'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #constructor }
 GestorEmpleoVisual class >> crear [ 
 
 	|temp|
