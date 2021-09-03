@@ -4,7 +4,7 @@ Class {
 	#category : #'TrabajoPromocionPoo2021-Logica'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #constructor }
 DeTrabajo class >> descripcion: unaDescripcion valor: unValor [
 
 	| nuevaSol |
@@ -13,13 +13,13 @@ DeTrabajo class >> descripcion: unaDescripcion valor: unValor [
 	^ nuevaSol
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #auxiliares }
 DeTrabajo >> deServicio [ 
 
 	^false
 ]
 
-{ #category : #printing }
+{ #category : #toString }
 DeTrabajo >> toString [
 
 	| txt |

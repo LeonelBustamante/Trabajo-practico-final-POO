@@ -7,7 +7,7 @@ Class {
 	#category : #'TrabajoPromocionPoo2021-Logica'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #constructor }
 Combinada class >> nombre: unNombre rubro: unRubro puntos: unosPuntos tipo:unTipo colProductos: unaColProductos [ 
 
 	| empresa |
@@ -17,44 +17,43 @@ Combinada class >> nombre: unNombre rubro: unRubro puntos: unosPuntos tipo:unTip
 	^ empresa
 ]
 
-{ #category : #'as yet unclassified' }
-Combinada >> colToString: unaColeccion [
-
-	| txt |
-	txt := ' '.
-	unaColeccion do: [ :each | 
-		txt := txt , each  , '  ' ].
-	^ txt
-]
-
-{ #category : #'as yet unclassified' }
-Combinada >> getColProductos [
+{ #category : #get }
+Combinada >> colProductos [
 
 	^ colProductos
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #auxiliares }
+Combinada >> colToString: unaColeccion [
+
+	| txt |
+	txt := ' '.
+	unaColeccion do: [ :each | txt := txt , each asString , '  ' ].
+	^ txt
+]
+
+{ #category : #initialization }
 Combinada >> iniciarPostulanteNombre: unNombre rubro: unRubro puntos: unosPuntos tipo:unTipo colProductos: unaColProductos [
 
 self iniciarPostulanteNombre: unNombre rubro:  unRubro puntos: unosPuntos tipo: unTipo .
 colProductos := unaColProductos.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #toString }
 Combinada >> toString [
 
 	| col txt |
 	txt := super toString.
-	col := self colToString: colProductos .
-	^ txt , 'Productos: ' , col , String cr
+	col := self colToString: colProductos.
+	^ txt , 'Productos: ' , col ,'(EMPRESA COMBINADA)', String cr
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #auxiliares }
 Combinada >> vendeProductos [
 ^true
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #auxiliares }
 Combinada >> verificaProductos: unaColeccionCesta [
 
 	^unaColeccionCesta allSatisfy: [ :productoCesta |  colProductos anySatisfy: [ :productoEmpresa | 

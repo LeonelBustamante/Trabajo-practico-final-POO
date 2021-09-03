@@ -7,7 +7,7 @@ Class {
 	#category : #'TrabajoPromocionPoo2021-Logica'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #constructor }
 ConProductos class >> descripcion: unaDescripcion duracion: unaDuracion valor: unValor tipoPago: unTipoPago colCestaProductos: unaColeccion [
 
 	| nuevaSol |
@@ -22,24 +22,24 @@ ConProductos class >> descripcion: unaDescripcion duracion: unaDuracion valor: u
 	^ nuevaSol
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #get }
+ConProductos >> colCestaProductos [
+
+	^ colCestaProductos
+]
+
+{ #category : #auxiliares }
 ConProductos >> colToString: unaColeccion [
 	^String streamContents: [:s | 
 		unaColeccion do: [:each | s nextPutAll: each asString]]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #auxiliares }
 ConProductos >> conProductos [
 	^ true
 ]
 
-{ #category : #'as yet unclassified' }
-ConProductos >> getColCestaProductos [
-
-	^ colCestaProductos
-]
-
-{ #category : #'as yet unclassified' }
+{ #category : #initialization }
 ConProductos >> iniciarSolicituDescripcion: unaDescripcion duracion: unaDuracion valor: unValor tipoPago: unTipoPago colCestaProductos: unaColeccion [ 
 
 	self
@@ -50,7 +50,7 @@ ConProductos >> iniciarSolicituDescripcion: unaDescripcion duracion: unaDuracion
 	colCestaProductos := unaColeccion
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #toString }
 ConProductos >> toString [
 
 	| col txt |

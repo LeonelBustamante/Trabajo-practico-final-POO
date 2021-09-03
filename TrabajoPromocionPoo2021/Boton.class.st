@@ -16,13 +16,13 @@ Boton class >> nombre: unNombre tamanio: unTamanio [
 	^ temp
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #auxiliares }
 Boton >> centerText [
 
 	label center: self center
 ]
 
-{ #category : #accessing }
+{ #category : #auxiliares }
 Boton >> font: aFont [
 
 	label font: aFont.
@@ -35,7 +35,7 @@ Boton >> initializeButton: aName [
 	self label: aName
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #auxiliares }
 Boton >> modalBotonConfirmar [
 
 	self
@@ -50,7 +50,7 @@ Boton >> modalBotonConfirmar [
 			centerText 
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #auxiliares }
 Boton >> modalBotonMenu [
 
 	label
@@ -60,20 +60,20 @@ Boton >> modalBotonMenu [
 		center: self center.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #mouse }
 Boton >> mouseAction: aEvent [
 
 	aBlock := aEvent
 ]
 
-{ #category : #'event handling' }
+{ #category : #mouse }
 Boton >> mouseUp: aEvent [
 
 	super mouseUp: aEvent.
 	aBlock value
 ]
 
-{ #category : #accessing }
+{ #category : #auxiliares }
 Boton >> textColor: aColor [
 
 	label color: aColor

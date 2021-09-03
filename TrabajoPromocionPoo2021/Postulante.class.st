@@ -7,37 +7,36 @@ Class {
 	#category : #'TrabajoPromocionPoo2021-Logica'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #auxiliares }
 Postulante >> esPersona [
 
 	^ self subclassResponsibility
 ]
 
-{ #category : #accessing }
-Postulante >> getMaximo [
-	^ self subclassResponsibility
-]
-
-{ #category : #'as yet unclassified' }
-Postulante >> getNombre [
-
-	^ nombre
-]
-
-{ #category : #'as yet unclassified' }
+{ #category : #initialization }
 Postulante >> iniciarPostulanteNombre: unNombre [
-"Postulante es abstracta"
 
 	nombre := unNombre
 ]
 
-{ #category : #'as yet unclassified' }
-Postulante >> toString [
-
-	^ 'Empresa: ' , nombre, String cr.
+{ #category : #get }
+Postulante >> maximo [
+	^ self subclassResponsibility
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #get }
+Postulante >> nombre [
+
+	^ nombre
+]
+
+{ #category : #toString }
+Postulante >> toString [
+
+	^ 'Postulante: ' , nombre , String cr
+]
+
+{ #category : #auxiliares }
 Postulante >> verificarAptitud: arg1 [ 
 	^ self subclassResponsibility
 ]

@@ -19,13 +19,13 @@ Checkbox class >> nombre: unNombre tamanio: unTamanio [
 	^ temp
 ]
 
-{ #category : #accessing }
+{ #category : #auxiliares }
 Checkbox >> color [
 
 	labelMorph  color: (Color r: 0.38 g: 0.47 b: 0.58)
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #auxiliares }
 Checkbox >> estado [
 
 	^ self buttonMorph selected

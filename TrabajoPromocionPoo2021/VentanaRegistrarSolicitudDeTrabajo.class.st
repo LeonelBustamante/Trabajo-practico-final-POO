@@ -36,7 +36,7 @@ VentanaRegistrarSolicitudDeTrabajo >> agregarBoton [
 
 
 		controlEmpresa := MiGestor colEmpresasSolicitantes anySatisfy: [ :x | 
-			                  x getNombre = inputNombre input ].
+			                  x nombre = inputNombre input ].
 
 		inputNombre isNotEmpty & controlRubro & inputValor isNotEmpty
 		& controlEmpresa ifTrue: [ 

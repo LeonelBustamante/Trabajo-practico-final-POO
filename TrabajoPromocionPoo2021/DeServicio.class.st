@@ -7,7 +7,7 @@ Class {
 	#category : #'TrabajoPromocionPoo2021-Logica'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #constructor }
 DeServicio class >> descripcion: unaDescripcion duracion: unaDuracion valor: unValor tipoPago: unTipoPago [
 
 	| nuevaSol |
@@ -20,25 +20,25 @@ DeServicio class >> descripcion: unaDescripcion duracion: unaDuracion valor: unV
 	^ nuevaSol
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #auxiliares }
 DeServicio >> conProductos [
 	^ false
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #auxiliares }
 DeServicio >> deServicio [ 
 
 	^ true
 	
 ]
 
-{ #category : #accessing }
+{ #category : #get }
 DeServicio >> duracionServicio [
 
 	^ duracionServicio
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #initialization }
 DeServicio >> iniciarSolicituDescripcion: unaDescripcion duracion: unaDuracion valor: unValor tipoPago: unTipoPago [
 
 	self iniciarSolicitudDescripcion: unaDescripcion valor: unValor.
@@ -46,7 +46,7 @@ DeServicio >> iniciarSolicituDescripcion: unaDescripcion duracion: unaDuracion v
 	duracionServicio := unaDuracion
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #toString }
 DeServicio >> toString [
 
 	| txt |

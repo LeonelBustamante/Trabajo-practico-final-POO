@@ -23,13 +23,13 @@ TextBox class >> nombre: aText tamanio: aSize [
 	^ temp
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #auxiliares }
 TextBox >> clear [
 
 	self setText: ''
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #auxiliares }
 TextBox >> estilo [
 
 	self
@@ -38,26 +38,26 @@ TextBox >> estilo [
 		borderColor: Color black
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #auxiliares }
 TextBox >> ghostColor: aColor [
 
 	self withRulerNamed: #ghostText.
 	self ghostTextRuler textColor: aColor
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #auxiliares }
 TextBox >> input [
 
 	^ self text asString
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #auxiliares }
 TextBox >> isEmpty [
 
 	^ self text asString = ''
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #auxiliares }
 TextBox >> isNotEmpty [
 
 	^ self text asString ~= ''

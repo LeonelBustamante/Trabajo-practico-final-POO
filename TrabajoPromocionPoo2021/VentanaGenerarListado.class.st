@@ -127,7 +127,7 @@ VentanaGenerarListado >> porEmpresa [
 	| selecEmpresa go nombres |
 	nombres := OrderedCollection new.
 	nombres := MiGestor colEmpresasSolicitantes collect: [ :x | 
-		           x getNombre ].
+		           x nombre ].
 	selecEmpresa := SearchMorph new.
 	selecEmpresa extent: 500@30 ;searchList: nombres.
 	go := Boton nombre: 'GO' tamanio: 30 @ 30.

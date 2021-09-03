@@ -19,13 +19,19 @@ Persona class >> nombre: unNombre aptitudes: unaColAptitudes [
 	^ persona
 ]
 
-{ #category : #initialization }
+{ #category : #set }
 Persona class >> setMaximoIndividual: unMAXIMOINDIVIDUAL [
 
 MAXIMOINDIVIDUAL := unMAXIMOINDIVIDUAL 
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #get }
+Persona >> colAptitudes [
+
+	^ colAptitudes
+]
+
+{ #category : #auxiliares }
 Persona >> colToString: unaColeccion [
 
 	| txt |
@@ -34,41 +40,34 @@ Persona >> colToString: unaColeccion [
 	^ txt
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #auxiliares }
 Persona >> esPersona [ 
 
 	^true
 ]
 
-{ #category : #'as yet unclassified' }
-Persona >> getColAptitudes [
-
-	^ colAptitudes
-]
-
-{ #category : #'as yet unclassified' }
-Persona >> getMaximo [ 
-^MAXIMOINDIVIDUAL 
-]
-
-{ #category : #'as yet unclassified' }
+{ #category : #initialization }
 Persona >> iniciarPostulanteNombre: unNombre aptitudes: unaColAptitudes [
 self iniciarPostulanteNombre: unNombre.
 	colAptitudes := unaColAptitudes.
-	self getMaximo
+	self maximo
 ]
 
-{ #category : #'as yet unclassified' }
-Persona >> toString [
+{ #category : #get }
+Persona >> maximo [ 
+^MAXIMOINDIVIDUAL 
+]
 
+{ #category : #toString }
+Persona >> toString [
 
 	| col txt |
 	txt := super toString.
-	col := self colToString: colAptitudes .
-	^ txt,'Aptitudes: ' , col , String cr
+	col := self colToString: colAptitudes.
+	^ txt , 'Aptitudes: ' , col ,'(PERSONA)', String cr
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #auxiliares }
 Persona >> verificarAptitud: unaDescripcion [
 
 	^ colAptitudes anySatisfy: [ :cadaAptitud | 

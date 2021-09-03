@@ -70,7 +70,7 @@ VentanaRegistrarSolicitudDeServicio >> agregarBoton [
 
 
 		controlEmpresa := MiGestor colEmpresasSolicitantes anySatisfy: [ :y | 
-			                  y getNombre = inputNombre input ].
+			                  y nombre = inputNombre input ].
 
 
 		controlEmpresa & controlRubro & controlTP & inputNombre isNotEmpty

@@ -68,7 +68,7 @@ Class {
 	#category : #'TrabajoPromocionPoo2021-Logica'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #constructor }
 GestorEmpleos class >> crear [
 
 	| gestor |
@@ -81,7 +81,7 @@ GestorEmpleos class >> crear [
 	^ gestor
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #constructor }
 GestorEmpleos class >> crearConMaximoIndividual: unNumero maximo:unNumero2 [
 
 	| gestor |
@@ -94,81 +94,81 @@ GestorEmpleos class >> crearConMaximoIndividual: unNumero maximo:unNumero2 [
 	^ gestor
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #ejercicios }
 GestorEmpleos >> aceptarPropuestas [
 
 	| unaSolicitud |
 	colPropuestas do: [ :cadaPropuesta | 
-		unaSolicitud := cadaPropuesta getSolicitud.
+		unaSolicitud := cadaPropuesta solicitud.
 		(self estaEnColSolicitudesPendientes: unaSolicitud) ifTrue: [ 
 			colSolicitudesPendientes remove: unaSolicitud.
 			colSolicitudesResueltas add: unaSolicitud.
-			cadaPropuesta getPostulante esPersona ifFalse: [ 
-				cadaPropuesta getPostulante sacarSolicitud: unaSolicitud ] ] ].
+			cadaPropuesta postulante esPersona ifFalse: [ 
+				cadaPropuesta postulante sacarSolicitud: unaSolicitud ] ] ].
 	self
 		changed: colPropuestas.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #get }
 GestorEmpleos >> colEmpresasSolicitantes [
 
 	^ colEmpresasSolicitantes
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #getToString }
 GestorEmpleos >> colEmpresasSolicitantesToString [
 	^self colToString: colEmpresasSolicitantes.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #get }
 GestorEmpleos >> colPostulantes [
 
 	^ colPostulantes
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #getToString }
 GestorEmpleos >> colPostulantesToString [
 
 	^ self colToString: colPostulantes
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #get }
 GestorEmpleos >> colPropuestas [
 
 	^ colPropuestas
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #getToString }
 GestorEmpleos >> colPropuestasToString [
 
 	^ self colToString: colPropuestas 
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #get }
 GestorEmpleos >> colSolicitudesPendientes [
 
 	^ colSolicitudesPendientes
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #getToString }
 GestorEmpleos >> colSolicitudesPendientesToString [
 
 	^ self colToString: colSolicitudesPendientes 
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #get }
 GestorEmpleos >> colSolicitudesResueltas [
 
 	^ colSolicitudesResueltas
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #getToString }
 GestorEmpleos >> colSolicitudesResueltasToString [
 
 	^ self changed: colSolicitudesResueltas
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #auxiliares }
 GestorEmpleos >> colToString: unaColeccion [
 
 	| txt |
@@ -177,13 +177,13 @@ GestorEmpleos >> colToString: unaColeccion [
 	^ txt
 ]
 
-{ #category : #'as yet unclassified' }
-GestorEmpleos >> estaEnColSolicitudesPendientes:unaSolicitud [
+{ #category : #auxiliares }
+GestorEmpleos >> estaEnColSolicitudesPendientes: unaSolicitud [
 
-^colSolicitudesPendientes  anySatisfy: [ :x | x getID  = unaSolicitud getID ]
+	^ colSolicitudesPendientes anySatisfy: [ :x |  x id = unaSolicitud id ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #ejercicios }
 GestorEmpleos >> generarPropuestas [
 
 	| res propuesta postulanteApto |
@@ -196,17 +196,17 @@ GestorEmpleos >> generarPropuestas [
 			res := false.
 			postulanteApto := false.
 
-			res := cadaPostulante verificarAptitud: cadaSol getDescripcion.
+			res := cadaPostulante verificarAptitud: cadaSol descripcion.
 			res ifTrue: [ 
 				res := cadaPostulante esPersona.
+
 				res
-					ifTrue: [ "DESDE ACA EMPRESAS"
+					ifTrue: [ 
 						res := cadaSol deServicio.
 						res
 							ifTrue: [ 
 								res := cadaSol conProductos.
-								res ifFalse: [ "VERIFICAR QUE EL SERVICIO SEA MENOR QUE MAXIMOINDIVIDUAL" 
-									postulanteApto := true ] ]
+								res ifFalse: [ postulanteApto := true ] ]
 							ifFalse: [ postulanteApto := true ] ]
 					ifFalse: [ 
 						res := cadaSol deServicio.
@@ -217,15 +217,15 @@ GestorEmpleos >> generarPropuestas [
 								        & (cadaSol duracionServicio > 0)).
 
 							res ifTrue: [ 
-								res := cadaPostulante getMaximo * cadaPostulante getPuntos
-								       >= cadaSol getValor.
+								res := cadaPostulante maximo * cadaPostulante puntos
+								       >= cadaSol valor.
 								res ifTrue: [ 
 									res := cadaSol conProductos.
 									res ifTrue: [ 
 										res := cadaPostulante vendeProductos.
 										res ifTrue: [ 
 											res := cadaPostulante verificaProductos:
-												       cadaSol getColCestaProductos.
+												       cadaSol colCestaProductos.
 											res ifTrue: [ postulanteApto := true ] ] ] ] ] ] ] ].
 			postulanteApto ifTrue: [ 
 				propuesta := Propuesta
@@ -235,68 +235,65 @@ GestorEmpleos >> generarPropuestas [
 	self changed: colPropuestas
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #initialization }
 GestorEmpleos >> iniciarGestorEmpleo [
 
 	colEmpresasSolicitantes := OrderedCollection new.
 	colPostulantes := OrderedCollection new.
 	colPropuestas := OrderedCollection new.
-	colSolicitudesPendientes := SortedCollection sortUsing: [ :elem1 :elem2 | 
-		                            elem1 getFecha isOnOrBefore:  elem2 getFecha ].
+	colSolicitudesPendientes := SortedCollection sortUsing: [ :elem1 :elem2 |  elem1 fecha isOnOrBefore:  elem2 fecha ].
 	colSolicitudesResueltas := OrderedCollection new
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #ejercicios }
 GestorEmpleos >> listadoSolicitudesPendientesDeEmpresa: unaEmpresa [
 
 
 	self changed:
-		(unaEmpresa colSolicitudesGeneradas select: [ :cadaSolEnGeneradas | 
-			 colEmpresasSolicitantes anySatisfy: [ :cadaSolEnPendientes | 
-				 cadaSolEnPendientes getID = cadaSolEnGeneradas getID ] ])
+		(unaEmpresa colSolicitudesGeneradas select: [ :cadaSolEnGeneradas | colEmpresasSolicitantes anySatisfy: [ :cadaSolEnPendientes |  cadaSolEnPendientes id = cadaSolEnGeneradas id ] ])
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #ejercicios }
 GestorEmpleos >> listadoSolicitudesPendientesEnFecha: unaFecha [
 
 	| col |
 	col := colSolicitudesPendientes select: [ :x | 
-		       x getFecha equals: unaFecha ].
+		       x fecha equals: unaFecha ].
 	col := self colToString: col.
 	self changed: col
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #ejercicios }
 GestorEmpleos >> registrarEmpresaSolicitante: unaEmpresa [
 
 	| temp |
 	temp := colEmpresasSolicitantes anySatisfy: [ :x | 
-		        unaEmpresa getNombre = x getNombre ].
+		        unaEmpresa nombre = x nombre ].
 	temp ifFalse: [ 
 		colEmpresasSolicitantes add: unaEmpresa.
 		(colPostulantes anySatisfy: [ :x | 
-			 unaEmpresa getNombre = x getNombre ]) ifFalse: [ 
+			 unaEmpresa nombre = x nombre ]) ifFalse: [ 
 			colPostulantes add: unaEmpresa ] ].
 
 	self changed: colEmpresasSolicitantes
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #ejercicios }
 GestorEmpleos >> registrarPostulante: unPostulante [
 
 	| temp |
 	temp := colPostulantes anySatisfy: [ :x | 
-		        unPostulante getNombre = x getNombre ].
+		        unPostulante nombre = x nombre ].
 	temp ifFalse: [ colPostulantes add: unPostulante ].
 	self changed: colPostulantes 
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #ejercicios }
 GestorEmpleos >> registrarSolicitud: unaSolicitud postulante: unNombrePostualante [
 
 	| propietariaSolicitud |
 
-	propietariaSolicitud := colEmpresasSolicitantes detect: [ :x |  x getNombre = unNombrePostualante getNombre] ifNone: [ nil ].
+	propietariaSolicitud := colEmpresasSolicitantes detect: [ :x |  x nombre = unNombrePostualante nombre] ifNone: [ nil ].
 	propietariaSolicitud ifNotNil: [   colSolicitudesPendientes add: unaSolicitud. propietariaSolicitud agregarSolicitud: unaSolicitud. self changed: colSolicitudesPendientes ].
 
 

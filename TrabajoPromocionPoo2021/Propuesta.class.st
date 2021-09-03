@@ -8,7 +8,7 @@ Class {
 	#category : #'TrabajoPromocionPoo2021-Logica'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #constructor }
 Propuesta class >> postulante: unPostulante	solicitud: unaSolicitud [
 	|nuevaPropuesta |
 	nuevaPropuesta := self new.
@@ -16,27 +16,27 @@ Propuesta class >> postulante: unPostulante	solicitud: unaSolicitud [
 	^nuevaPropuesta 
 ]
 
-{ #category : #'as yet unclassified' }
-Propuesta >> getPostulante [
-
-	^ postulante
-]
-
-{ #category : #'as yet unclassified' }
-Propuesta >> getSolicitud [
-
-	^ solicitud
-]
-
-{ #category : #'as yet unclassified' }
+{ #category : #initialization }
 Propuesta >> iniciarPropuestaPostulante: unPostulante solicitud: unaSolicitud [
 postulante := unPostulante .
 solicitud := unaSolicitud 
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #get }
+Propuesta >> postulante [
+
+	^ postulante
+]
+
+{ #category : #get }
+Propuesta >> solicitud [
+
+	^ solicitud
+]
+
+{ #category : #toString }
 Propuesta >> toString [
 
-	^ postulante toString , 'Maximo: ' , postulante getMaximo asString
-	  , String cr , String cr , solicitud toString , String cr
+	^ postulante toString , 'Maximo: ' , postulante maximo asString
+	  , String cr , String cr , solicitud toString , String cr, String cr, String cr
 ]

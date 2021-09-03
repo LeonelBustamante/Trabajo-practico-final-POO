@@ -4,7 +4,7 @@ Class {
 	#category : #'TrabajoPromocionPoo2021-Componentes'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #constructor }
 Tabla class >> tamanio: unTamanio [
 
 	| temp |

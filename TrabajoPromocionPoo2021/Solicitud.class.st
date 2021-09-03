@@ -14,54 +14,42 @@ Class {
 	#category : #'TrabajoPromocionPoo2021-Logica'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #auxiliares }
 Solicitud class >> actualizarID [
 IDContador:= IDContador + 1.
 ]
 
-{ #category : #initialization }
+{ #category : #set }
 Solicitud class >> setID: unNumero [
 
 	IDContador := unNumero
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #auxiliares }
 Solicitud >> deServicio [
 
 	^ self subclassResponsibility
 ]
 
-{ #category : #'as yet unclassified' }
-Solicitud >> getDescripcion [
+{ #category : #get }
+Solicitud >> descripcion [
 
 	^ descripcion
 ]
 
-{ #category : #'as yet unclassified' }
-Solicitud >> getFecha [
+{ #category : #get }
+Solicitud >> fecha [
 
 	^ fecha
 ]
 
-{ #category : #'as yet unclassified' }
-Solicitud >> getID [
+{ #category : #get }
+Solicitud >> id [
 
 	^ id
 ]
 
-{ #category : #'as yet unclassified' }
-Solicitud >> getTipoPago [
-
-	^ tipoPago
-]
-
-{ #category : #'as yet unclassified' }
-Solicitud >> getValor [
-
-	^ valor
-]
-
-{ #category : #'as yet unclassified' }
+{ #category : #initialization }
 Solicitud >> iniciarSolicitudDescripcion: unaDescripcion valor: unValor [
 
 	id := IDContador.
@@ -72,11 +60,23 @@ Solicitud >> iniciarSolicitudDescripcion: unaDescripcion valor: unValor [
 	IDContador := IDContador + 1
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #get }
+Solicitud >> tipoPago [
+
+	^ tipoPago
+]
+
+{ #category : #toString }
 Solicitud >> toString [
 
 	^ 'Solicitud ID: ' , id asString , String cr
 	  , 'Descripcion: ' , descripcion , String cr , 'Tipo de pago: '
 	  , tipoPago , String cr , 'Valor Total: ' , valor asString
 	  , String cr
+]
+
+{ #category : #get }
+Solicitud >> valor [
+
+	^ valor
 ]

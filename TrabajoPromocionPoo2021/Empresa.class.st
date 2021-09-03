@@ -13,7 +13,7 @@ Class {
 	#category : #'TrabajoPromocionPoo2021-Logica'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #constructor }
 Empresa class >> nombre: unNombre rubro: unRubro puntos: unosPuntos tipo:unTipo [
 
 	| empresa |
@@ -26,34 +26,40 @@ Empresa class >> nombre: unNombre rubro: unRubro puntos: unosPuntos tipo:unTipo 
 	^ empresa
 ]
 
-{ #category : #initialization }
+{ #category : #set }
 Empresa class >> setMAXIMO: unMAXIMO [
 MAXIMO := unMAXIMO.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #auxiliares }
 Empresa >> agregarSolicitud: unaSolicitud [
 
 colSolicitudesGeneradas add: unaSolicitud 
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #get }
+Empresa >> colSolicitudesGeneradas [
+
+	^ colSolicitudesGeneradas
+]
+
+{ #category : #auxiliares }
 Empresa >> colToString: unaColeccion [
 
 	| txt |
 	txt := ' '.
 	unaColeccion do: [ :each | 
-		txt := txt , 'ID:' , each getID asString , '  ' ].
+		txt := txt , 'ID:' , each id asString , '  ' ].
 	^ txt
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #auxiliares }
 Empresa >> esPersona [
 
 	^false
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #getToString }
 Empresa >> getColSolicitudesGeneradas [
 
 
@@ -61,32 +67,14 @@ Empresa >> getColSolicitudesGeneradas [
 	^ self colToString: colSolicitudesGeneradas 
 ]
 
-{ #category : #'as yet unclassified' }
-Empresa >> getMaximo [
-
-^MAXIMO 
-]
-
-{ #category : #'as yet unclassified' }
-Empresa >> getPuntos [
-
-	^ puntos
-]
-
-{ #category : #'as yet unclassified' }
-Empresa >> getRubro [
-
-	^ rubro
-]
-
-{ #category : #'as yet unclassified' }
+{ #category : #auxiliares }
 Empresa >> hayFraude: iDVerificar [
 
 	^ colSolicitudesGeneradas anySatisfy: [ :unaSolicitud | 
-		  iDVerificar ~= unaSolicitud getID ]
+		  iDVerificar ~= unaSolicitud id ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #initialization }
 Empresa >> iniciarPostulanteNombre: unNombre rubro: unRubro puntos: unosPuntos tipo: unTipo [
 
 	self iniciarPostulanteNombre: unNombre.
@@ -94,39 +82,56 @@ Empresa >> iniciarPostulanteNombre: unNombre rubro: unRubro puntos: unosPuntos t
 	puntos := unosPuntos.
 	colSolicitudesGeneradas := OrderedCollection new.
 	tipoActividad := unTipo.
-	self getMaximo
+	self maximo
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #get }
+Empresa >> maximo [
+
+^MAXIMO 
+]
+
+{ #category : #get }
+Empresa >> puntos [
+
+	^ puntos
+]
+
+{ #category : #get }
+Empresa >> rubro [
+
+	^ rubro
+]
+
+{ #category : #auxiliares }
 Empresa >> sacarSolicitud: unaSolicitud [
 
 colSolicitudesGeneradas remove: unaSolicitud.
 ]
 
-{ #category : #accessing }
+{ #category : #get }
 Empresa >> tipoActividad [
 
 	^ tipoActividad
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #toString }
 Empresa >> toString [
 
 	| col txt |
 	txt := super toString.
-	col := self colToString: colSolicitudesGeneradas .
-	^ txt, 'Rubro: ' , rubro , String cr , 'Puntos: '
-	  , puntos asString ,String cr , 'Tipo Actividad: '
-	  , tipoActividad  , String cr, 'Solicitudes Generadas: '
-	  , col asString , String cr.
+	col := self colToString: colSolicitudesGeneradas.
+	^ txt , 'Rubro: ' , rubro , String cr , 'Puntos: ' , puntos asString
+	  , String cr , 'Tipo Actividad: ' , tipoActividad , String cr
+	  , 'Solicitudes Generadas: ' , col asString ,'(EMPRESA)', String cr
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #auxiliares }
 Empresa >> vendeProductos [
 ^false
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #auxiliares }
 Empresa >> verificarAptitud: unaDescripcion [
 
 	^ unaDescripcion = rubro
