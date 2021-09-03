@@ -3,11 +3,11 @@
 ### Materia: Programacion Orientada a Objetos
 #### Tema: TrabajoAR - Gestor de Empleos que relaciona empresas solicitantes con postulantes para solicitudes de Servicio o trabajo
 
->Estado: **:+1: EN PROCESO**
+>Estado: **:+1: FINALIZADO**
 - [x] Crear la Parte visual
 - [x] Completar parte Logica
-- [ ] Diagramar
-- [x] \(Optional)Testear
+- [x] Diagramar
+- [x] Testear
 - [ ] Presentado
 
 
