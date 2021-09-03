@@ -5,9 +5,9 @@
 
 >Estado: **:+1: EN PROCESO**
 - [x] Crear la Parte visual
-- [ ] Completar parte Logica
+- [x] Completar parte Logica
 - [ ] Diagramar
-- [ ] \(Optional)Testear
+- [x] \(Optional)Testear
 - [ ] Presentado
 
 
